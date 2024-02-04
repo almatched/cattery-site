@@ -15,8 +15,12 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-* {
-  margin: 0;
+h1,h2,h3,h4,h5,h6,p,
+hgroup,ul,ol,dd,dl,
+blockquote,figure,
+pre,table,fieldset,hr {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -29,6 +33,7 @@ ol[role="list"] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -100,6 +105,10 @@ main {
 
 a {
   text-decoration: none;
+}
+
+li {
+  margin-bottom: 1.5rem;
 }
 
 .content-wrapper {
