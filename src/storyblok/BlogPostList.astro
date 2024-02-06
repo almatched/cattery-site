@@ -23,7 +23,7 @@ const posts = data.stories.map((story) => {
 const { blok } = Astro.props;
 ---
 
-<ul {...storyblokEditable(blok)}>
+<ul {...storyblokEditable(blok)} role="list">
   {
     posts.map((post) => (
       <li>

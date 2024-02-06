@@ -95,31 +95,42 @@ html {
 }
 
 body {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
+  max-width: 50rem; */
+
+  display: grid;
+  grid-template-columns: 1fr min(80ch, 60vw) 1fr;
+  gap: 1rem;
 }
 
 main {
   grid-column: 2;
 }
 
+footer {
+  grid-column-end: span 3;
+}
+
 a {
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 li {
   margin-bottom: 1.5rem;
 }
 
-.content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr min(80ch, 60vw) 1fr;
-  gap: 1rem;
-}
+/* .content-wrapper {
+  column
+} */
 
 .page-nav {
   display: flex;
-  justify-content: center;
   padding: 2rem 0;
   gap: 2rem;
   color: darkblue;
