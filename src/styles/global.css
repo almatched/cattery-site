@@ -108,6 +108,15 @@ html {
   font-family: system-ui;
 }
 
+html.dark {
+  background-color: midnightblue;
+  color: white;
+}
+
+.dark a {
+  color: white;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr min(80ch, 60vw) 1fr;
@@ -120,6 +129,10 @@ main {
 
 a {
   text-decoration: none;
+}
+
+.dark a {
+  color: lightcoral;
 }
 
 p {
@@ -158,8 +171,30 @@ li {
   background-color: darkblue;
 }
 
+.themeToggle {
+  border: 0;
+  background: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.sun {
+  fill: black;
+}
+
+.moon {
+  fill: transparent;
+}
+
+.dark .sun {
+  fill: transparent;
+}
+
+.dark .moon {
+  fill: white;
+}
+
 @media screen and (max-width: 636px) {
-  
   .page-nav {
     display: none;
     flex-direction: column;
@@ -173,6 +208,14 @@ li {
 
   .hamburger {
     display: block;
+  }
+
+  .dark .hamburger .line {
+    background-color: lightcoral;
+  }
+
+  .themeToggle {
+    margin-left: 0;
   }
 }
 
