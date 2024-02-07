@@ -1,6 +1,17 @@
+---
+import Hamburger from "./Hamburger.astro";
+---
+
 <header>
-  <nav class="page-nav" style="">
+  <Hamburger />
+  <nav class="page-nav">
     <a href="/">Home</a>
     <a href="/blog/">Blog</a>
   </nav>
 </header>
+
+<script>
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector(".page-nav").classList.toggle("expanded");
+  });
+</script>

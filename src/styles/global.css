@@ -15,10 +15,24 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-h1,h2,h3,h4,h5,h6,p,
-hgroup,ul,ol,dd,dl,
-blockquote,figure,
-pre,table,fieldset,hr {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+hgroup,
+ul,
+ol,
+dd,
+dl,
+blockquote,
+figure,
+pre,
+table,
+fieldset,
+hr {
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
@@ -123,11 +137,43 @@ li {
 
 .page-nav {
   display: flex;
-  padding: 2rem 0;
+  margin: 2rem 0;
   gap: 2rem;
   color: darkblue;
   font-size: 2.5rem;
   font-weight: 600;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+  margin: 2rem 0;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: darkblue;
+}
+
+@media screen and (max-width: 636px) {
+  
+  .page-nav {
+    display: none;
+    flex-direction: column;
+    padding: 0;
+    margin-top: 0;
+  }
+  
+  .expanded {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
 
 .page-footer {
@@ -145,6 +191,7 @@ li {
   color: blue;
 }
 
-.link-to-post:hover {
+.link-to-post:hover,
+.link-to-post:focus {
   opacity: 0.7;
 }
