@@ -4,16 +4,20 @@ import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <header>
-  <Hamburger /> 
-  <nav class="page-nav">
-    <a href="/">Home</a>
-    <a href="/blog/">Blog</a>
+  <Hamburger />
+  <div class="header-menu">
+    <nav>
+      <ul role="list" class="page-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
     <ThemeIcon />
-  </nav>
+  </div>
 </header>
 
 <script>
   document.querySelector(".hamburger").addEventListener("click", () => {
-    document.querySelector(".page-nav").classList.toggle("expanded");
+    document.querySelector(".header-menu").classList.toggle("expanded");
   });
 </script>
