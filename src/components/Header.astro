@@ -1,6 +1,15 @@
 ---
 import Hamburger from "./Hamburger.astro";
 import ThemeIcon from "./ThemeIcon.astro";
+
+import { useStoryblokApi } from "@storyblok/astro";
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories/config", {
+  version: "draft",
+  resolve_links: "url",
+});
+const headerMenu = data?.story?.content?.header_menu;
+// TODO: link properly to "/" index page, currently links to "/home" instead
 ---
 
 <header>
@@ -8,8 +17,15 @@ import ThemeIcon from "./ThemeIcon.astro";
   <div class="header-menu">
     <nav>
       <ul role="list" class="page-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        {
+          headerMenu.map((menu) => (
+            <li>
+              <a href={`/${menu.link.cached_url}`}>
+                {menu.link.story.name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
     <ThemeIcon />
