@@ -29,6 +29,7 @@ export default defineConfig({
                 'all-profiles': 'storyblok/AllProfiles',
                 'about-page': 'storyblok/AboutPage',
                 'contact-page': 'storyblok/Contact',
+                'gallery-page': 'storyblok/GalleryPage',
             },
             apiOptions: {
                 region: 'eu',

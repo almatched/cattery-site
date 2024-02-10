@@ -18,7 +18,7 @@ const renderedRichText = renderRichText(blok.description);
         {blok.gender}
       </p>
       <p>
-        {blok.birthdate}
+        {blok.birthdate.slice(0, 10)}
       </p>
       <div set:html={renderedRichText} />
     </div>
@@ -32,45 +32,3 @@ const renderedRichText = renderRichText(blok.description);
     
   </ul>
 </article>
-
-<style>
-  .content-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .gallery-wrapper {
-    --min: 15rem;
-    --aspect-ratio: 4/3;
-    --gap: 0.5rem;
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap);
-
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .image-wrapper {
-    height: max(15vh, 15rem);
-    flex: 1 1 var(--min);
-  }
-
-  @supports (aspect-ratio: 1) {
-    .image-wrapper {
-      aspect-ratio: var(--aspect-ratio);
-      height: auto;
-    }
-  }
-
-  .image-wrapper img {
-    display: block;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-</style>

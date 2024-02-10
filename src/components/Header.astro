@@ -25,7 +25,7 @@ const headerMenu = data?.story?.content?.header_menu;
         {
           headerMenu.map((menu) => (
             <li>
-              <a href={menu.link.cached_url}>
+              <a href={menu.link.cached_url.startsWith('/') ? menu.link.cached_url : `/${menu.link.cached_url}`}>
                 {menu.link_name}
               </a>
             </li>

@@ -1,0 +1,17 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<article {...storyblokEditable(blok)}>
+  <ul class="gallery-wrapper" role="list">
+    {
+      blok.gallery.map((image) => (
+        <li class="image-wrapper">
+          <img src={image.filename} />
+        </li>
+      ))
+    }
+  </ul>
+</article>

@@ -45,7 +45,6 @@ const { data } = await storyblokApi.get(
   `cdn/stories/${slug === undefined ? "home" : slug}`,
   {
     version: "draft",
-    resolve_relations: ["popular-articles.articles"],
     language,
   }
 );
