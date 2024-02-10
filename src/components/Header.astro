@@ -2,13 +2,17 @@
 import Hamburger from "./Hamburger.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 
+import { languages, getTransLink } from "../utils/langs.js";
 import { useStoryblokApi } from "@storyblok/astro";
+
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/stories/config", {
   version: "draft",
   resolve_links: "url",
 });
 const headerMenu = data?.story?.content?.header_menu;
+
+const { langSwitch, language } = Astro.props;
 // TODO: link properly to "/" index page, currently links to "/home" instead
 ---
 
@@ -20,7 +24,7 @@ const headerMenu = data?.story?.content?.header_menu;
         {
           headerMenu.map((menu) => (
             <li>
-              <a href={`/${menu.link.cached_url}`}>
+              <a href={getTransLink(language, `/${menu.link.cached_url}`)}>
                 {menu.link.story.name}
               </a>
             </li>
@@ -28,6 +32,7 @@ const headerMenu = data?.story?.content?.header_menu;
         }
       </ul>
     </nav>
+    {languages.map((lang) => <a href={langSwitch[lang]}>{lang}</a>)}
     <ThemeIcon />
   </div>
 </header>

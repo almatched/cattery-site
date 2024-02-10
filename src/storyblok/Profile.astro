@@ -23,9 +23,14 @@ const renderedRichText = renderRichText(blok.description);
       <div set:html={renderedRichText} />
     </div>
   </div>
-  <!-- <ul role="list" class="gallery-wrapper">
-    <li><img /></li>
-  </ul> -->
+  <ul class="gallery-wrapper" role="list">
+    {blok.gallery.map(image => (
+      <li class="image-wrapper">
+        <img src={image.filename} />
+        </li>
+    ))}
+    
+  </ul>
 </article>
 
 <style>
@@ -33,6 +38,7 @@ const renderedRichText = renderRichText(blok.description);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   .gallery-wrapper {
