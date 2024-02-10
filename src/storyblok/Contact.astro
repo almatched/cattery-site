@@ -1,0 +1,9 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<article {...storyblokEditable(blok)}>
+  <h2>{blok.title}</h2>
+</article>

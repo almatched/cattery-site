@@ -1,11 +1,18 @@
 import { defineConfig } from 'astro/config';
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
+    vite: {
+        plugins: [basicSsl()],
+        server: {
+            https: true,
+        },
+    },
     redirects: {
         '/home': '/',
     },
@@ -20,6 +27,8 @@ export default defineConfig({
                 config: 'storyblok/Config',
                 profile: 'storyblok/Profile',
                 'all-profiles': 'storyblok/AllProfiles',
+                'about-page': 'storyblok/AboutPage',
+                'contact-page': 'storyblok/Contact',
             },
             apiOptions: {
                 region: 'eu',
