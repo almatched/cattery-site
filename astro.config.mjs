@@ -15,6 +15,7 @@ export default defineConfig({
     },
     redirects: {
         '/home': '/',
+        '/en/home': '/en/',
     },
     integrations: [
         storyblok({
@@ -30,6 +31,9 @@ export default defineConfig({
                 'about-page': 'storyblok/AboutPage',
                 'contact-page': 'storyblok/Contact',
                 'gallery-page': 'storyblok/GalleryPage',
+                'home-page': 'storyblok/HomePage',
+                'values-list': 'storyblok/ValuesList',
+                entry: 'storyblok/Entry',
             },
             apiOptions: {
                 region: 'eu',

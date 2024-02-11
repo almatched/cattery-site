@@ -6,18 +6,9 @@ const { language, blok } = Astro.props;
 ---
 
 <div {...storyblokEditable(blok)}>
-  <div class="grid-container">
     {
       blok.columns?.map((blok) => {
         return <StoryblokComponent language={language} blok={blok} />;
       })
     }
-  </div>
 </div>
-
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-</style>

@@ -29,7 +29,8 @@ const articles = data.stories;
               <div class="information-wrapper">
                 <h3>{article.content.name}</h3>
                 <p>{article.content.gender}</p>
-                <p>{article.content.birthdate}</p>
+                <p>{article.content.birthdate.slice(0, 10)}</p>
+                <p>{article.content.price}</p>
                 <a href={getTransLink(language, `/profiles/${article.content.slug}`)}>read more...</a>
               </div>
             </li>

@@ -1,0 +1,19 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { language, blok } = Astro.props;
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2>{blok.title}</h2>
+  <ul>
+    {
+      blok.values?.map((blok) => (
+        <li>
+          <StoryblokComponent language={language} blok={blok} />
+        </li>
+      ))
+    }
+  </ul>
+</section>

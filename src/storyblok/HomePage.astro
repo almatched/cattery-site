@@ -1,0 +1,17 @@
+---
+import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { language, blok } = Astro.props;
+const renderedRichText = renderRichText(blok.content);
+---
+
+<div {...storyblokEditable(blok)}>
+  <h1>{blok.title}</h1>
+  <div set:html={renderedRichText }/>
+  {
+    blok.block?.map((blok) => (
+      <StoryblokComponent language={language} blok={blok} />
+    ))
+  }
+</div>
