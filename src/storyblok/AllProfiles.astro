@@ -27,9 +27,12 @@ const articles = data.stories;
                 <img src={article.content.image.filename} />
               </div>
               <div class="information-wrapper">
-                <h3>{article.content.name}</h3>
+                <h2>{article.content.name}</h2>
+                <p class="item-title">{article.content.gender_title}</p>
                 <p>{article.content.gender}</p>
+                <p class="item-title">{article.content.birthdate_title}</p>
                 <p>{article.content.birthdate.slice(0, 10)}</p>
+                <p class="item-title">{article.content.price_title}</p>
                 <p>{article.content.price}</p>
                 <a href={getTransLink(language, `/profiles/${article.content.slug}`)}>read more...</a>
               </div>

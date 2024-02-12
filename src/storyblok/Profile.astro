@@ -14,21 +14,27 @@ const renderedRichText = renderRichText(blok.description);
       <h1>
         {blok.name}
       </h1>
+      <p class="item-title">{blok.gender_title}</p>
       <p>
         {blok.gender}
       </p>
+      <p class="item-title">{blok.birthdate_title}</p>
       <p>
         {blok.birthdate.slice(0, 10)}
       </p>
-      <div set:html={renderedRichText} />
+      <p class="item-title">{blok.price_title}</p>
+      <p>{blok.price}</p>
     </div>
   </div>
+  <p class="item-title">{blok.description_title}</p>
+  <div set:html={renderedRichText} />
   <ul class="gallery-wrapper" role="list">
-    {blok.gallery.map(image => (
-      <li class="image-wrapper">
-        <img src={image.filename} />
+    {
+      blok.gallery.map((image) => (
+        <li class="image-wrapper">
+          <img src={image.filename} />
         </li>
-    ))}
-    
+      ))
+    }
   </ul>
 </article>

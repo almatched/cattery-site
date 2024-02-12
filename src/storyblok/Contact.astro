@@ -1,11 +1,17 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-const { blok } = Astro.props;
+const { language, blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
   <h2>{blok.title}</h2>
   <p>{blok.email}</p>
   <p>{blok.telefon}</p>
+  {
+    blok.links?.map((blok) => (
+      <StoryblokComponent language={language} blok={blok} />
+    ))
+  }
 </article>

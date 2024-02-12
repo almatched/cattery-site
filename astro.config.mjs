@@ -34,6 +34,7 @@ export default defineConfig({
                 'home-page': 'storyblok/HomePage',
                 'values-list': 'storyblok/ValuesList',
                 entry: 'storyblok/Entry',
+                'menu-link': 'storyblok/MenuLink',
             },
             apiOptions: {
                 region: 'eu',
