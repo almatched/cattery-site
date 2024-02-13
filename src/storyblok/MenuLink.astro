@@ -3,4 +3,4 @@ import { storyblokEditable } from '@storyblok/astro';
 
 const { blok } = Astro.props;
 ---
-<a {...storyblokEditable(blok)} href={blok.link.url}>{blok.link_name}</p>
+<a {...storyblokEditable(blok)} href={blok.link.cached_url}>{blok.link_name}</p>

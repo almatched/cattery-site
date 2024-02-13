@@ -285,8 +285,9 @@ p {
 /* gallery */
 
 .content-wrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  /* grid-template-columns: repeat(2, 1fr); */
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
 }

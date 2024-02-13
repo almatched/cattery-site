@@ -1,13 +1,16 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-const { blok } = Astro.props;
+const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);
 ---
 
 <article {...storyblokEditable(blok)}>
-  <div class="content-wrapper">
-    <div class="image-wrapper">
+  <!-- <div class="content-wrapper"> -->
+    <div class="smol-css-grid">
+    <!-- <div class="image-wrapper" style="max-width:20rem;"> -->
+    <div>
       <img src={blok.image.filename} />
     </div>
     <div>
@@ -22,15 +25,36 @@ const renderedRichText = renderRichText(blok.description);
       <p>
         {blok.birthdate.slice(0, 10)}
       </p>
-      <p class="item-title">{blok.price_title}</p>
-      <p>{blok.price}</p>
+      {
+        blok.price.trim().length !== 0 && (
+          <>
+            <p class="item-title">{blok.price_title}</p>
+            <p>{blok.price}</p>
+          </>
+        )
+      }
     </div>
   </div>
-  <p class="item-title">{blok.description_title}</p>
-  <div set:html={renderedRichText} />
+  {
+    renderedRichText?.trim().length !== 0 && (
+      <>
+        <p class="item-title">{blok.description_title}</p>
+        <div set:html={renderedRichText} />
+      </>
+    )
+  }
+  <ul role="list">
+    {
+      blok.parents?.map((blok) => (
+        <li>
+          <StoryblokComponent language={language} blok={blok} />
+        </li>
+      ))
+    }
+  </ul>
   <ul class="gallery-wrapper" role="list">
     {
-      blok.gallery.map((image) => (
+      blok.gallery?.map((image) => (
         <li class="image-wrapper">
           <img src={image.filename} />
         </li>
@@ -38,3 +62,16 @@ const renderedRichText = renderRichText(blok.description);
     }
   </ul>
 </article>
+
+<style>
+  .smol-css-grid {
+    --min: 25ch;
+    --gap: 1rem;
+
+    display: grid;
+    grid-gap: var(--gap);
+    /* min() with 100% prevents overflow
+  in extra narrow spaces */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  }
+</style>

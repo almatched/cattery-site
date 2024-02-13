@@ -1,0 +1,26 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<section {...storyblokEditable(blok)} class="smol-css-grid">
+  <img src={blok.image.filename} />
+  <div>
+    <h3>{blok.name}</h3>
+    <a href={blok.link.cached_url}>More about me...</a>
+  </div>
+</section>
+
+<style>
+  .smol-css-grid {
+    --min: 25ch;
+    --gap: 1rem;
+
+    display: grid;
+    grid-gap: var(--gap);
+    /* min() with 100% prevents overflow
+    in extra narrow spaces */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  }
+</style>
