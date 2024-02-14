@@ -1,331 +1,76 @@
-/* CSS reset */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-hgroup,
-ul,
-ol,
-dd,
-dl,
-blockquote,
-figure,
-pre,
-table,
-fieldset,
-hr {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-  padding: 0;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
-
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
-
-/* Make images easier to work with */
-img,
-picture,
-svg,
-video {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
-}
-
-/* custom CSS */
-
-html {
-  font-family: system-ui;
-}
-
-html.dark {
-  background-color: #0c243c;
-  color: white;
-}
-
-.dark a {
-  color: white;
-}
-
-body {
-  display: grid;
-  grid-template-columns: 1fr min(80ch, 60vw) 1fr;
-  gap: 1rem;
-}
-
-main {
-  grid-column: 2;
-}
-
-a {
-  text-decoration: none;
-}
-
-.dark a {
-  color: lightcoral;
-}
-
-p {
-  max-width: 70ch;
-}
-
-.blog-post-list li {
-  margin-bottom: 1.5rem;
-}
-
-/* header */
-
-.header-menu {
-  display: flex;
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.page-nav {
-  display: flex;
-  gap: 2rem;
-  color: darkblue;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0;
-}
-
-.hamburger {
-  cursor: pointer;
-  display: none;
-  margin: 2rem 0;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: darkblue;
-}
-
-.themeToggle {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.menu-utils {
-  margin-left: auto;
-}
-
-.menu-utils a {
-  padding: 0.5rem;
-}
-
-.menu-utils a:hover {
-  opacity: 0.7;
-}
-
-.sun {
-  fill: black;
-}
-
-.moon {
-  fill: transparent;
-}
-
-.dark .sun {
-  fill: transparent;
-}
-
-.dark .moon {
-  fill: white;
-}
-
-@media screen and (max-width: 636px) {
-  .header-menu {
-    display: none;
-    flex-direction: column;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
   }
-
-  .page-nav {
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .expanded {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .dark .hamburger .line {
-    background-color: lightcoral;
-  }
-
-  .menu-utils {
-    margin-left: 0;
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
-
-/* footer */
-
-.page-footer {
-  margin-top: auto;
-  padding: 1.5em;
-  background-color: #333;
-  color: white;
-  grid-column-end: span 3;
-}
-
-.page-footer ul {
-  margin-bottom: 0;
-}
-
-.page-footer p {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-footer li {
-  transition: transform 0.2s;
-}
-
-.page-footer li:hover,
-.page-footer li:focus {
-  transform: scale(1.2);
-}
-
-.page-footer ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.link-to-post {
-  color: blue;
-}
-
-.link-to-post:hover,
-.link-to-post:focus {
-  opacity: 0.7;
-}
-
-/* gallery */
-
-.content-wrapper {
-  display: flex;
-  /* grid-template-columns: repeat(2, 1fr); */
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.gallery-wrapper {
-  --min: 15rem;
-  --aspect-ratio: 4/3;
-  --gap: 0.5rem;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.image-wrapper {
-  height: max(15vh, 15rem);
-  flex: 1 1 var(--min);
-}
-
-@supports (aspect-ratio: 1) {
-  .image-wrapper {
-    aspect-ratio: var(--aspect-ratio);
-    height: auto;
+ 
+@layer base {
+  * {
+    @apply border-border;
   }
-}
-
-.image-wrapper img {
-  display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.item-title {
-  margin-bottom: 0;
-  font-weight: bold;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
