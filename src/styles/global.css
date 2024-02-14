@@ -282,24 +282,25 @@ p {
   opacity: 0.7;
 }
 
+.grid-wrapper {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
+}
+
 /* gallery */
 
 .content-wrapper {
   display: flex;
-  /* grid-template-columns: repeat(2, 1fr); */
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 .gallery-wrapper {
-  --min: 15rem;
-  --aspect-ratio: 4/3;
-  --gap: 0.5rem;
-
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: 0.5rem;
 
   list-style: none;
   padding: 0;
@@ -308,12 +309,12 @@ p {
 
 .image-wrapper {
   height: max(15vh, 15rem);
-  flex: 1 1 var(--min);
+  flex: 1 1 15rem;
 }
 
 @supports (aspect-ratio: 1) {
   .image-wrapper {
-    aspect-ratio: var(--aspect-ratio);
+    aspect-ratio: 4/3;
     height: auto;
   }
 }

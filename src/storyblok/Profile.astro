@@ -8,9 +8,9 @@ const renderedRichText = renderRichText(blok.description);
 
 <article {...storyblokEditable(blok)}>
   <!-- <div class="content-wrapper"> -->
-    <div class="smol-css-grid">
+    <div class="grid-wrapper">
     <!-- <div class="image-wrapper" style="max-width:20rem;"> -->
-    <div>
+    <div class="image-wrapper">
       <img src={blok.image.filename} />
     </div>
     <div>
@@ -62,16 +62,3 @@ const renderedRichText = renderRichText(blok.description);
     }
   </ul>
 </article>
-
-<style>
-  .smol-css-grid {
-    --min: 25ch;
-    --gap: 1rem;
-
-    display: grid;
-    grid-gap: var(--gap);
-    /* min() with 100% prevents overflow
-  in extra narrow spaces */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
-  }
-</style>
