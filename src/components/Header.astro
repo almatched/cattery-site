@@ -21,8 +21,8 @@ const headerMenu = data?.story?.content?.header_menu;
 <header>
   <div class="flex justify-between items-center mx-5">
     <Navigation data={headerMenu} client:idle />
-    <div>
-      <SelectLanguage data={languages} langSwitch={langSwitch} client:idle />
+    <div class="flex gap-4">
+      <SelectLanguage language={language} data={languages} langSwitch={langSwitch} client:idle />
       <ModeToggle client:load />
     </div>
   </div>

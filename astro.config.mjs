@@ -25,8 +25,6 @@ export default defineConfig({
       components: {
         page: 'storyblok/Page',
         grid: 'storyblok/Grid',
-        feature: 'storyblok/Feature',
-        teaser: 'storyblok/Teaser',
         config: 'storyblok/Config',
         profile: 'storyblok/Profile',
         'all-profiles': 'storyblok/AllProfiles',

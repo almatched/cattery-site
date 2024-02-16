@@ -5,10 +5,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function SelectLanguage({ data, langSwitch }) {
+export function SelectLanguage({ data, langSwitch, language }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>Language</DropdownMenuTrigger>
+      <DropdownMenuTrigger>{language}</DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {data?.map((lang, key) => <DropdownMenuItem key={key}><a href={langSwitch[lang]} className="w-full">{lang}</a></DropdownMenuItem>)}
       </DropdownMenuContent>

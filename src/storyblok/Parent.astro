@@ -4,9 +4,9 @@ import { storyblokEditable } from "@storyblok/astro";
 const { blok } = Astro.props;
 ---
 
-<section {...storyblokEditable(blok)} class="grid-wrapper">
-  <div class="image-wrapper">
-    <img src={blok.image.filename} />
+<section {...storyblokEditable(blok)} class="flex flex-wrap gap-2 mb-10">
+  <div>
+    <img class="aspect-[4/3] object-cover max-w-80 rounded-md" src={blok.image.filename} />
   </div>
   <div>
     <h3>{blok.name}</h3>

@@ -7,10 +7,10 @@ const renderedRichText = renderRichText(blok.description);
 ---
 
 <article {...storyblokEditable(blok)}>
-  <div class="flex flex-wrap gap-2">
+  <div class="flex flex-wrap gap-2 mb-5">
     <div>
       <img
-        class="aspect-[4/3] max-w-80 object-cover"
+        class="aspect-[4/3] max-w-80 object-cover rounded-md"
         src={blok.image.filename}
       />
     </div>
@@ -43,15 +43,16 @@ const renderedRichText = renderRichText(blok.description);
         )
       }
     </div>
-    {
-      renderedRichText?.trim().length !== 0 && (
-        <>
-          <p class="item-title">{blok.description_title}</p>
-          <div set:html={renderedRichText} />
-        </>
-      )
-    }
-    <ul role="list">
+  </div>
+  {
+    renderedRichText?.trim().length !== 0 && (
+      <>
+        <p class="font-bold">{blok.description_title}</p>
+        <div class="mb-5" set:html={renderedRichText} />
+      </>
+    )
+  }
+    <ul>
       {
         blok.parents?.map((blok) => (
           <li>
@@ -60,14 +61,13 @@ const renderedRichText = renderRichText(blok.description);
         ))
       }
     </ul>
-    <ul class="gallery-wrapper" role="list">
+    <ul class="flex flex-wrap gap-1">
       {
         blok.gallery?.map((image) => (
-          <li class="image-wrapper">
-            <img src={image.filename} />
+          <li>
+            <img class="aspect-[4/3] object-cover max-w-80 rounded-sm" src={image.filename} />
           </li>
         ))
       }
     </ul>
-  </div>
 </article>
