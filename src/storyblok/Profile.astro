@@ -7,56 +7,67 @@ const renderedRichText = renderRichText(blok.description);
 ---
 
 <article {...storyblokEditable(blok)}>
-  <div class="grid-wrapper">
-    <div class="image-wrapper">
-      <img src={blok.image.filename} />
+  <div class="flex flex-wrap gap-2">
+    <div>
+      <img
+        class="aspect-[4/3] max-w-80 object-cover"
+        src={blok.image.filename}
+      />
     </div>
     <div>
       <h1>
         {blok.name}
       </h1>
-      <p class="item-title">{blok.gender_title}</p>
-      <p>
-        {blok.gender}
-      </p>
-      <p class="item-title">{blok.birthdate_title}</p>
-      <p>
-        {blok.birthdate.slice(0, 10)}
-      </p>
       {
-        blok.price.trim().length !== 0 && (
-          <>
-            <p class="item-title">{blok.price_title}</p>
+        !!blok.gender?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.gender_title}</p>
+            <p>{blok.gender}</p>
+          </div>
+        )
+      }
+      {
+        !!blok.birthdate?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.birthdate_title}</p>
+            <p>{blok.birthdate.slice(0, 10)}</p>
+          </div>
+        )
+      }
+      {
+        !!blok.price?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.price_title}</p>
             <p>{blok.price}</p>
-          </>
+          </div>
         )
       }
     </div>
+    {
+      renderedRichText?.trim().length !== 0 && (
+        <>
+          <p class="item-title">{blok.description_title}</p>
+          <div set:html={renderedRichText} />
+        </>
+      )
+    }
+    <ul role="list">
+      {
+        blok.parents?.map((blok) => (
+          <li>
+            <StoryblokComponent language={language} blok={blok} />
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="gallery-wrapper" role="list">
+      {
+        blok.gallery?.map((image) => (
+          <li class="image-wrapper">
+            <img src={image.filename} />
+          </li>
+        ))
+      }
+    </ul>
   </div>
-  {
-    renderedRichText?.trim().length !== 0 && (
-      <>
-        <p class="item-title">{blok.description_title}</p>
-        <div set:html={renderedRichText} />
-      </>
-    )
-  }
-  <ul role="list">
-    {
-      blok.parents?.map((blok) => (
-        <li>
-          <StoryblokComponent language={language} blok={blok} />
-        </li>
-      ))
-    }
-  </ul>
-  <ul class="gallery-wrapper" role="list">
-    {
-      blok.gallery?.map((image) => (
-        <li class="image-wrapper">
-          <img src={image.filename} />
-        </li>
-      ))
-    }
-  </ul>
 </article>

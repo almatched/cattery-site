@@ -13,14 +13,12 @@ const { language, langSwitch, pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
-    <!-- <div class="content-wrapper"> -->
-    <main>
+  <body class="min-h-screen flex flex-col">
+    <main class="mx-5 mb-5">
       <Header langSwitch={langSwitch} language={language} />
       <h1>{pageTitle}</h1>
-      <slot />
+        <slot />
     </main>
-    <!-- </div> -->
     <Footer />
   </body>
 </html>

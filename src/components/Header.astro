@@ -1,7 +1,7 @@
 ---
-import Hamburger from "./Hamburger.astro";
-// import ThemeIcon from "./ThemeIcon.astro";
-import { ModeToggle } from './ModeToggle.tsx';
+import { Navigation } from "./Navigation.jsx";
+import { SelectLanguage } from "./SelectLanguage.jsx";
+import { ModeToggle } from "./ModeToggle.tsx";
 
 import { languages } from "../utils/langs.js";
 import { useStoryblokApi } from "@storyblok/astro";
@@ -19,30 +19,11 @@ const headerMenu = data?.story?.content?.header_menu;
 ---
 
 <header>
-  <Hamburger />
-  <div class="header-menu">
-    <nav>
-      <ul role="list" class="page-nav">
-        {
-          headerMenu.map((menu) => (
-            <li>
-              <a href={menu.link.cached_url.startsWith('/') ? menu.link.cached_url : `/${menu.link.cached_url}`}>
-                {menu.link_name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-    <div class="menu-utils">
-      {languages.map((lang) => <a href={langSwitch[lang]}>{lang}</a>)}
+  <div class="flex justify-between items-center mx-5">
+    <Navigation data={headerMenu} client:idle />
+    <div>
+      <SelectLanguage data={languages} langSwitch={langSwitch} client:idle />
       <ModeToggle client:load />
     </div>
   </div>
 </header>
-
-<script>
-  document.querySelector(".hamburger").addEventListener("click", () => {
-    document.querySelector(".header-menu").classList.toggle("expanded");
-  });
-</script>

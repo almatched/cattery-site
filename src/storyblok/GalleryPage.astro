@@ -5,11 +5,11 @@ const { blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
-  <ul class="gallery-wrapper" role="list">
+  <ul class="flex gap-1 flex-wrap">
     {
       blok.gallery.map((image) => (
-        <li class="image-wrapper">
-          <img src={image.filename} />
+        <li>
+          <img class="aspect-[4/3] max-w-60 object-cover" src={image.filename} />
         </li>
       ))
     }

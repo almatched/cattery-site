@@ -7,10 +7,10 @@ const { language, blok } = Astro.props;
 
 <section {...storyblokEditable(blok)}>
   <h2>{blok.title}</h2>
-  <ul>
+  <ul class="list-disc ml-5">
     {
       blok.values?.map((blok) => (
-        <li>
+        <li class="mb-1 last:pb-5">
           <StoryblokComponent language={language} blok={blok} />
         </li>
       ))

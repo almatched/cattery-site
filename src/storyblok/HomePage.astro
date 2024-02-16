@@ -8,7 +8,7 @@ const renderedRichText = renderRichText(blok.content);
 
 <div {...storyblokEditable(blok)}>
   <h1>{blok.title}</h1>
-  <div set:html={renderedRichText }/>
+  <div class="mb-5" set:html={renderedRichText} />
   {
     blok.block?.map((blok) => (
       <StoryblokComponent language={language} blok={blok} />
