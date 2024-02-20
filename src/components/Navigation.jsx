@@ -12,7 +12,7 @@ import {
 export function Navigation({ data }) {
   return (
     <NavigationMenu>
-      <NavigationMenuList className="flex gap-5 my-5 text-xl justify-center">
+      <NavigationMenuList className="flex-col lg:flex-row flex gap-5 text-xl justify-center">
         {data?.map((menu, key) => (
           <NavigationMenuItem key={key} className="bg-accent p-2 rounded-md">
             <NavigationMenuLink asChild>
