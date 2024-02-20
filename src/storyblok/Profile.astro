@@ -15,9 +15,9 @@ const renderedRichText = renderRichText(blok.description);
       />
     </div>
     <div>
-      <h1>
+      <h2>
         {blok.name}
-      </h1>
+      </h2>
       {
         !!blok.gender?.trim().length && (
           <div class="mb-2">
@@ -52,22 +52,49 @@ const renderedRichText = renderRichText(blok.description);
       </>
     )
   }
-    <ul>
-      {
-        blok.parents?.map((blok) => (
-          <li>
-            <StoryblokComponent language={language} blok={blok} />
-          </li>
-        ))
-      }
-    </ul>
-    <ul class="flex flex-wrap gap-1">
-      {
-        blok.gallery?.map((image) => (
-          <li>
-            <img class="aspect-[4/3] object-cover max-w-80 rounded-sm" src={image.filename} />
-          </li>
-        ))
-      }
-    </ul>
+  {
+    !!blok.parents?.length && (
+      <section>
+        <h2>{blok.parents_title}</h2>
+        <ul>
+          {blok.parents?.map((blok) => (
+            <li>
+              <StoryblokComponent language={language} blok={blok} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+  {
+    !!blok.children?.length && (
+      <section>
+        <h2>{blok.children_title}</h2>
+        <ul>
+          {blok.children?.map((blok) => (
+            <li>
+              <StoryblokComponent language={language} blok={blok} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+  {
+    !!blok.gallery?.length && (
+      <section>
+        <h2>{blok.gallery_title}</h2>
+        <ul class="flex flex-wrap gap-1">
+          {blok.gallery?.map((image) => (
+            <li>
+              <img
+                class="aspect-[4/3] object-cover max-w-80 rounded-sm"
+                src={image.filename}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 </article>

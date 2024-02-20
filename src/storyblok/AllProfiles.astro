@@ -22,7 +22,7 @@ const articles = data.stories;
         articles.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li class="flex gap-3 mb-2">
+            <li class="flex gap-3 mb-5">
               <div>
                 <img
                   class="aspect-[4/3] object-cover max-w-80 rounded-md"
@@ -37,25 +37,26 @@ const articles = data.stories;
                     <p>{article.content.gender}</p>
                   </div>
                 )}
-                {!!article.content.birthdate?.trim().length &&
+                {!!article.content.birthdate?.trim().length && (
                   <div class="mb-2">
                     <p class="font-bold">{article.content.birthdate_title}</p>
                     <p>{article.content.birthdate.slice(0, 10)}</p>
                   </div>
-                }
-                {!!article.content.price?.trim().length &&
+                )}
+                {!!article.content.price?.trim().length && (
                   <div class="mb-2">
                     <p class="font-bold">{article.content.price_title}</p>
                     <p>{article.content.price}</p>
                   </div>
-                }
+                )}
                 <a
+                  class="underline underline-offset-2"
                   href={getTransLink(
                     language,
                     `/profiles/${article.content.slug}`
                   )}
                 >
-                  read more...
+                  {article.content.link_title}
                 </a>
               </div>
             </li>

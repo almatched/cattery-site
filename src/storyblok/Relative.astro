@@ -10,6 +10,6 @@ const { blok } = Astro.props;
   </div>
   <div>
     <h3>{blok.name}</h3>
-    <a href={blok.link.cached_url}>More about me...</a>
+    <a class="underline underline-offset-2" href=`/${blok.link.cached_url}`>More about me...</a>
   </div>
 </section>
