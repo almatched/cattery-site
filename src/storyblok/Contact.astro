@@ -28,9 +28,13 @@ const { language, blok } = Astro.props;
     !!blok.links?.length && (
       <div class="mb-5">
         <h3>{blok.links_title}</h3>
-        {blok.links?.map((blok) => (
-          <StoryblokComponent language={language} blok={blok} />
-        ))}
+        <ul class="flex flex-wrap gap-5">
+          {blok.links?.map((blok) => (
+            <li class="underline underline-offset-2">
+              <StoryblokComponent language={language} blok={blok} />
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }

@@ -14,7 +14,7 @@ export function NavigationDialog({ headerMenu, language, languages, langSwitch }
 
     return (
         <>
-            <div class="hidden lg:flex justify-between items-center mx-5 w-full">
+            <div class="hidden lg:flex justify-between items-center w-full gap-5">
                 <Navigation data={headerMenu} />
                 <div class="flex gap-5">
                     <SelectLanguage language={language} data={languages} langSwitch={langSwitch} client:idle />
@@ -30,7 +30,7 @@ export function NavigationDialog({ headerMenu, language, languages, langSwitch }
                     </Button>
                 </SheetTrigger>
                 <SheetContent>
-                    <div class="flex flex-col justify-between items-center mx-5 gap-5">
+                    <div class="flex flex-col justify-between items-center gap-5">
                         <Navigation data={headerMenu} />
                         <SelectLanguage language={language} data={languages} langSwitch={langSwitch} />
                         <ModeToggle />
