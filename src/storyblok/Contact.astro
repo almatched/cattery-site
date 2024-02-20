@@ -7,11 +7,31 @@ const { language, blok } = Astro.props;
 
 <article {...storyblokEditable(blok)}>
   <h2>{blok.title}</h2>
-  <p>{blok.email}</p>
-  <p>{blok.telefon}</p>
   {
-    blok.links?.map((blok) => (
-      <StoryblokComponent language={language} blok={blok} />
-    ))
+    !!blok.email?.trim().length && (
+      <div class="mb-5">
+        <h3>{blok.email_title}</h3>
+        <p>{blok.email}</p>
+      </div>
+    )
+  }
+
+  {
+    !!blok.telefon?.trim().length && (
+      <div class="mb-5">
+        <h3>{blok.telefon_title}</h3>
+        <p>{blok.telefon}</p>
+      </div>
+    )
+  }
+  {
+    !!blok.links?.length && (
+      <div class="mb-5">
+        <h3>{blok.links_title}</h3>
+        {blok.links?.map((blok) => (
+          <StoryblokComponent language={language} blok={blok} />
+        ))}
+      </div>
+    )
   }
 </article>
