@@ -1,7 +1,4 @@
 ---
-import { Navigation } from "./Navigation.jsx";
-import { SelectLanguage } from "./SelectLanguage.jsx";
-import { ModeToggle } from "./ModeToggle.tsx";
 import { NavigationDialog } from "./NavigationDialog.jsx";
 
 import { languages } from "../utils/langs.js";
@@ -20,5 +17,5 @@ const headerMenu = data?.story?.content?.header_menu;
 ---
 
 <header class="min-h-24 flex items-center">
-  <NavigationDialog headerMenu={headerMenu}, language={language}, languages={languages}, langSwitch={langSwitch} client:idle />
+  <NavigationDialog headerMenu={headerMenu}, languages={languages}, langSwitch={langSwitch} client:idle />
 </header>

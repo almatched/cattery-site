@@ -9,28 +9,26 @@ import {
 import { Button } from "./ui/button";
 import { AlignJustify } from "lucide-react";
 
-export function NavigationDialog({ headerMenu, language, languages, langSwitch }) {
-
-
+export function NavigationDialog({ headerMenu, languages, langSwitch }) {
     return (
         <>
-            <div class="hidden lg:flex justify-between items-center w-full gap-5">
+            <div className="hidden lg:flex justify-between items-center w-full gap-5">
                 <Navigation data={headerMenu} />
-                <div class="flex gap-5">
-                    <SelectLanguage data={languages} langSwitch={langSwitch} client:idle />
+                <div className="flex gap-5">
+                    <SelectLanguage data={languages} langSwitch={langSwitch} />
                     <ModeToggle />
                 </div>
             </div>
 
             <Sheet>
-                <SheetTrigger class="lg:hidden">
+                <SheetTrigger asChild className="lg:hidden">
                     <Button variant="outline" size="icon">
                         <AlignJustify />
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                 </SheetTrigger>
                 <SheetContent>
-                    <div class="flex flex-col justify-between items-center gap-5">
+                    <div className="flex flex-col justify-between items-center gap-5">
                         <Navigation data={headerMenu} />
                         <SelectLanguage data={languages} langSwitch={langSwitch} />
                         <ModeToggle />

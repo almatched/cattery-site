@@ -10,7 +10,7 @@ import { Globe } from "lucide-react"
 export function SelectLanguage({ data, langSwitch }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <Globe />
           <span className="sr-only">Toggle language select</span>
