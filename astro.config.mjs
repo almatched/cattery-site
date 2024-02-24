@@ -39,7 +39,10 @@ export default defineConfig({
   }), react(), tailwind({
     applyBaseStyles: false
   })],
-  output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'static',
+  ...(env.STORYBLOK_IS_PREVIEW === "yes" && {
+    output: "server",
+    adapter: vercel(),
+  }),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
       plugins: [basicSsl()],
@@ -48,5 +51,4 @@ export default defineConfig({
       }
     }
   }),
-  adapter: vercel()
 });
