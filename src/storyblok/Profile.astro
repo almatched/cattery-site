@@ -48,7 +48,7 @@ const renderedRichText = renderRichText(blok.description);
     renderedRichText?.trim().length !== 0 && (
       <>
         <p class="font-bold">{blok.description_title}</p>
-        <div class="mb-5" set:html={renderedRichText} />
+        <div class="mb-5 prose dark:prose-invert" set:html={renderedRichText} />
       </>
     )
   }

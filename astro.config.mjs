@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import vercel from "@astrojs/vercel/serverless";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
@@ -9,12 +10,6 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [basicSsl()],
-    server: {
-      https: true
-    }
-  },
   redirects: {
     '/home': '/',
     '/en/home': '/en/'
@@ -22,13 +17,13 @@ export default defineConfig({
   integrations: [
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
+      bridge: env.STORYBLOK_IS_PREVIEW === "yes",
       components: {
         page: 'storyblok/Page',
         grid: 'storyblok/Grid',
         config: 'storyblok/Config',
         profile: 'storyblok/Profile',
         'all-profiles': 'storyblok/AllProfiles',
-        'about-page': 'storyblok/AboutPage',
         'contact-page': 'storyblok/Contact',
         'gallery-page': 'storyblok/GalleryPage',
         'home-page': 'storyblok/HomePage',
@@ -46,5 +41,15 @@ export default defineConfig({
     react(),
     tailwind({
       applyBaseStyles: false,
-    })]
+    })],
+  output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'static',
+  ...(env.STORYBLOK_ENV === 'development' && {
+    vite: {
+      plugins: [basicSsl()],
+      server: {
+        https: true
+      }
+    }
+  }),
+  adapter: vercel(),
 });

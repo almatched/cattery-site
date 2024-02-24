@@ -1,14 +1,15 @@
 ---
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.js";
+import isPreview from "@/utils/isPreview";
 
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get(`cdn/stories`, {
-  version: "draft", // or 'published'
+  version: isPreview() ? "draft" : "published",
   starts_with: "profiles/",
-  is_startpage: 0,
+  is_startpage: false,
   language,
 });
 
@@ -16,7 +17,7 @@ const articles = data.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
-  <ul role="list">
+  <ul>
     {
       articles?.length &&
         articles.map((article) => {
