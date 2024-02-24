@@ -22,15 +22,17 @@ const articles = data.stories;
         articles.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li>
+            <li class="mb-10">
               <h2>{article.content.title}</h2>
+              <p>{article.content.description}</p>
               <a
+                class="underline underline-offset-2"
                 href={getTransLink(
                   language,
                   `/information/${article.content.slug}`
                 )}
               >
-                read more...
+                {article.content.link_title}
               </a>
             </li>
           );
