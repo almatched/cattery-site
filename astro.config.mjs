@@ -13,8 +13,6 @@ export default defineConfig({
   redirects: {
     '/': '/home',
     '/en/': '/en/home',
-    // '/home': '/',
-    // '/en/home': '/en/'
   },
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
