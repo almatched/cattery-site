@@ -5,6 +5,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
+import sitemap from "@astrojs/sitemap";
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 
@@ -12,8 +13,9 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 export default defineConfig({
   redirects: {
     '/': '/home',
-    '/en/': '/en/home',
+    '/en/': '/en/home'
   },
+  site: "https://www.mainecoon-kitten.de",
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: env.STORYBLOK_IS_PREVIEW === "yes",
@@ -38,10 +40,10 @@ export default defineConfig({
     }
   }), react(), tailwind({
     applyBaseStyles: false
-  })],
+  }), sitemap()],
   ...(env.STORYBLOK_IS_PREVIEW === "yes" && {
     output: "server",
-    adapter: vercel(),
+    adapter: vercel()
   }),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
@@ -50,5 +52,5 @@ export default defineConfig({
         https: true
       }
     }
-  }),
+  })
 });
