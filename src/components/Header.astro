@@ -6,14 +6,12 @@ import { useStoryblokApi } from "@storyblok/astro";
 
 const { langSwitch, language } = Astro.props;
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/config", {
+const { data } = await storyblokApi.get("cdn/stories/navbar-config", {
   version: "draft",
   resolve_links: "url",
   language,
 });
-const headerMenu = data?.story?.content?.header_menu;
-
-// TODO: link properly to "/" index page, currently links to "/home" instead
+const headerMenu = data?.story?.content?.items;
 ---
 
 <header class="min-h-24 flex items-center">

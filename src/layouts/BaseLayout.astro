@@ -42,7 +42,6 @@ const { language, langSwitch, pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    
     <main class="max-w-screen-md mx-auto w-full px-6 mb-5">
       <Header langSwitch={langSwitch} language={language} />
       <div>
@@ -50,6 +49,6 @@ const { language, langSwitch, pageTitle } = Astro.props;
       </div>
     </main>
     <!-- TODO: Connect footer to storyblok -->
-    <!-- <Footer /> -->
+    <Footer language={language} />
   </body>
 </html>
