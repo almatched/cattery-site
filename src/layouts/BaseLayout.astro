@@ -46,7 +46,6 @@ const { language, langSwitch, pageTitle } = Astro.props;
     <main class="max-w-screen-md mx-auto w-full px-6 mb-5">
       <Header langSwitch={langSwitch} language={language} />
       <div>
-        <h1>{pageTitle}</h1>
         <slot />
       </div>
     </main>

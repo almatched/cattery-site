@@ -23,8 +23,9 @@ const { data } = await storyblokApi.get(
   }
 );
 const story = data.story;
+console.log(story.content);
 ---
 
-<BaseLayout langSwitch={langSwitch} language={language}>
+<BaseLayout langSwitch={langSwitch} language={language} pageTitle={story.content.title}>
   <StoryblokComponent language={language} blok={story.content} />
 </BaseLayout>
