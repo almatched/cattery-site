@@ -1,5 +1,6 @@
 ---
 import { NavigationDialog } from "./NavigationDialog.jsx";
+import isPreview from "@/utils/isPreview";
 
 import { languages } from "../utils/langs.js";
 import { useStoryblokApi } from "@storyblok/astro";
@@ -7,7 +8,7 @@ import { useStoryblokApi } from "@storyblok/astro";
 const { langSwitch, language } = Astro.props;
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/stories/navbar-config", {
-  version: "draft",
+  version: isPreview() ? "draft" : "published",
   resolve_links: "url",
   language,
 });

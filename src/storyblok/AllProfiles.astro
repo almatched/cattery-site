@@ -6,18 +6,25 @@ import isPreview from "@/utils/isPreview";
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get(`cdn/stories`, {
+
+const { data: startPageData } = await storyblokApi.get('cdn/stories/profiles', {
+  version: isPreview() ? "draft" : "published",
+  language,
+});
+
+const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   version: isPreview() ? "draft" : "published",
   starts_with: "profiles/",
   is_startpage: false,
   language,
 });
 
-const articles = data.stories;
+const title = startPageData.story.content.title;
+const articles = itemsData.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
-  {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
+  {!!title.trim().length && <h1 class="sr-only">{title}</h1>}
   <ul>
     {
       articles?.length &&
