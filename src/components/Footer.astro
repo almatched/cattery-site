@@ -13,11 +13,13 @@ const socialLinks = data?.story?.content?.items;
 ---
 
 <footer class="mt-auto bg-accent py-8 px-6 flex flex-col items-center">
-        <ul class="flex flex-wrap gap-5">
-          {socialLinks?.map((blok) => (
-            <li class="underline underline-offset-2">
-              <StoryblokComponent language={language} blok={blok} />
-            </li>
-          ))}
-        </ul>
+  <ul class="flex flex-wrap gap-5">
+    {
+      socialLinks?.map((blok) => (
+        <li class="underline underline-offset-2">
+          <StoryblokComponent language={language} blok={blok} />
+        </li>
+      ))
+    }
+  </ul>
 </footer>

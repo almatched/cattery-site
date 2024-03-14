@@ -5,9 +5,7 @@ const { blok } = Astro.props;
 const renderedRichText = renderRichText(blok.content);
 ---
 
-<article {...storyblokEditable(blok)}>
-  <div class="prose dark:prose-invert">
+<article class="prose dark:prose-invert" {...storyblokEditable(blok)}>
     <h1>{blok.title}</h1>
     <div set:html={renderedRichText} />
-  </div>
 </article>

@@ -7,51 +7,52 @@ const renderedRichText = renderRichText(blok.description);
 ---
 
 <article {...storyblokEditable(blok)}>
-  <div class="flex flex-wrap gap-2 mb-5">
-    <div>
+    <section class="flex flex-wrap gap-2 mb-5">
       <img
         class="aspect-[4/3] max-w-80 object-cover rounded-md"
         src={blok.image.filename}
       />
-    </div>
-    <div>
-      <h2>
-        {blok.title}
-      </h2>
-      {
-        !!blok.gender?.trim().length && (
-          <div class="mb-2">
-            <p class="font-bold">{blok.gender_title}</p>
-            <p>{blok.gender}</p>
-          </div>
-        )
-      }
-      {
-        !!blok.birthdate?.trim().length && (
-          <div class="mb-2">
-            <p class="font-bold">{blok.birthdate_title}</p>
-            <p>{blok.birthdate.slice(0, 10)}</p>
-          </div>
-        )
-      }
-      {
-        !!blok.price?.trim().length && (
-          <div class="mb-2">
-            <p class="font-bold">{blok.price_title}</p>
-            <p>{blok.price}</p>
-          </div>
-        )
-      }
-    </div>
-  </div>
-  {
-    renderedRichText?.trim().length !== 0 && (
-      <>
-        <p class="font-bold">{blok.description_title}</p>
-        <div class="mb-5 prose dark:prose-invert" set:html={renderedRichText} />
-      </>
-    )
-  }
+      <div>
+        <h1>
+          {blok.title}
+        </h1>
+        {
+          !!blok.gender?.trim().length && (
+            <div class="mb-2">
+              <p class="font-bold">{blok.gender_title}</p>
+              <p>{blok.gender}</p>
+            </div>
+          )
+        }
+        {
+          !!blok.birthdate?.trim().length && (
+            <div class="mb-2">
+              <p class="font-bold">{blok.birthdate_title}</p>
+              <p>{blok.birthdate.slice(0, 10)}</p>
+            </div>
+          )
+        }
+        {
+          !!blok.price?.trim().length && (
+            <div class="mb-2">
+              <p class="font-bold">{blok.price_title}</p>
+              <p>{blok.price}</p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+    {
+      renderedRichText?.trim().length !== 0 && (
+        <section>
+          <h2 class="font-bold">{blok.description_title}</h2>
+          <div
+            class="mb-5 prose dark:prose-invert"
+            set:html={renderedRichText}
+          />
+        </section>
+      )
+    }
   {
     !!blok.parents?.length && (
       <section>

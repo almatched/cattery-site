@@ -1,4 +1,5 @@
 ---
+import { Title } from "@radix-ui/react-dialog";
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
@@ -6,11 +7,11 @@ const { language, blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
-  <h2>{blok.title}</h2>
+  {!!blok.title?.trim().length && <h1>{blok.title}</h1>}
   {
     !!blok.email?.trim().length && (
       <div class="mb-5">
-        <h3>{blok.email_title}</h3>
+        <h2>{blok.email_title}</h2>
         <p>{blok.email}</p>
       </div>
     )
@@ -19,7 +20,7 @@ const { language, blok } = Astro.props;
   {
     !!blok.telefon?.trim().length && (
       <div class="mb-5">
-        <h3>{blok.telefon_title}</h3>
+        <h2>{blok.telefon_title}</h2>
         <p>{blok.telefon}</p>
       </div>
     )
@@ -27,7 +28,7 @@ const { language, blok } = Astro.props;
   {
     !!blok.links?.length && (
       <div class="mb-5">
-        <h3>{blok.links_title}</h3>
+        <h2>{blok.links_title}</h2>
         <ul class="flex flex-wrap gap-5">
           {blok.links?.map((blok) => (
             <li class="underline underline-offset-2">

@@ -17,10 +17,11 @@ const articles = data.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
+  {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
   <ul>
     {
       articles?.length &&
-        articles.map((article) => {
+        articles?.map((article) => {
           article.content.slug = article.slug;
           return (
             <li class="mb-10">
