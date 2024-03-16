@@ -1,6 +1,7 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { Image } from "astro:assets";
 
 const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);
@@ -8,9 +9,11 @@ const renderedRichText = renderRichText(blok.description);
 
 <article {...storyblokEditable(blok)}>
     <section class="flex flex-wrap gap-2 mb-5">
-      <img
+      <Image
         class="aspect-[4/3] max-w-80 object-cover rounded-md"
-        src={blok.image.filename}
+        alt=""
+        inferSize
+        src={blok.image.filename + "/m/500x0"}
       />
       <div>
         <h1>
