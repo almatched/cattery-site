@@ -11,7 +11,14 @@ const { blok } = Astro.props;
     {
       blok.gallery?.map((image) => (
         <li>
-          <Image src={image.filename + "/m/"} alt="" inferSize class="aspect-[4/3] max-w-56 object-cover rounded-sm" />
+          <Image
+            src={image.filename + "/m/"}
+            alt=""
+            inferSize
+            class="aspect-[4/3] max-w-56 object-cover rounded-sm"
+            widths={[240, 540, 720, 1600]}
+            sizes={`(max-widths: 360px) 240px, (max-widths: 720px) 540px, (max-widths: 1600px) 720px, 1600px`}
+          />
         </li>
       ))
     }
