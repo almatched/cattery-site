@@ -1,16 +1,17 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import { Image } from "astro:assets";
 
 const { blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
-  <ul class="flex gap-1 flex-wrap">
+  <ul class="flex gap-3 flex-wrap">
     {
       blok.gallery?.map((image) => (
         <li>
-          <img class="aspect-[4/3] max-w-56 object-cover rounded-sm" src={image.filename + "/m/"} />
+          <Image src={image.filename + "/m/"} alt="" inferSize class="aspect-[4/3] max-w-56 object-cover rounded-sm" />
         </li>
       ))
     }
