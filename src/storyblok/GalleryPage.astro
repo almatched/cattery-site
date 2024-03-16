@@ -10,7 +10,7 @@ const { blok } = Astro.props;
     {
       blok.gallery?.map((image) => (
         <li>
-          <img class="aspect-[4/3] max-w-56 object-cover rounded-sm" src={image.filename} />
+          <img class="aspect-[4/3] max-w-56 object-cover rounded-sm" src={image.filename + "/m/"} />
         </li>
       ))
     }

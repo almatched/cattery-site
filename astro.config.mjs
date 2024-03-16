@@ -11,6 +11,9 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    remotePatterns: [{ protocol: "https" }],
+  },
   redirects: {
     '/': '/home',
     '/en/': '/en/home'
