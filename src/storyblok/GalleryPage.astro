@@ -7,18 +7,16 @@ const { blok } = Astro.props;
 
 <article {...storyblokEditable(blok)}>
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
-  <ul class="flex gap-3 flex-wrap">
+  <div class="flex gap-3 flex-wrap">
     {
       blok.gallery?.map((image) => (
-        <li>
-          <Image
+        <Image
             src={image.filename + "/m/500x0"}
-            alt=""
+            alt={image.alt ?? ""}
             inferSize
-            class="aspect-[4/3] max-w-56 object-cover rounded-sm"
+            class="aspect-[4/3] max-w-56 object-cover rounded-sm w-full"
           />
-        </li>
       ))
     }
-  </ul>
+  </div>
 </article>
