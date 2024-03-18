@@ -1,22 +1,21 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import { Image } from "astro:assets";
+import ImagePreset from "../components/ImagePreset.astro";
 
 const { blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
-  <div class="flex gap-3 flex-wrap">
+  <ul class="flex gap-3 flex-wrap">
     {
       blok.gallery?.map((image) => (
-        <Image
-            src={image.filename + "/m/500x0"}
-            alt={image.alt ?? ""}
-            inferSize
-            class="aspect-[4/3] max-w-56 object-cover rounded-sm w-full"
+        <li class="aspect-[4/3] max-w-56 w-full rounded-md overflow-hidden">
+          <ImagePreset 
+            image={image}
           />
+        </li>
       ))
     }
-  </div>
+  </ul>
 </article>

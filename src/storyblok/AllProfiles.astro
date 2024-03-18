@@ -2,7 +2,7 @@
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.js";
 import isPreview from "@/utils/isPreview";
-import { Image } from "astro:assets";
+import ImagePreset from "../components/ImagePreset.astro";
 
 const { language, blok } = Astro.props;
 
@@ -33,12 +33,9 @@ const articles = itemsData.stories;
           article.content.slug = article.slug;
           return (
             <li class="flex flex-wrap gap-3 mb-10">
-                <Image
-                  class="aspect-[4/3] max-w-80 object-cover rounded-md"
-                  alt={article.content.image.alt ?? ""}
-                  inferSize
-                  src={article.content.image.filename + "/m/500x0"}
-                />           
+              <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
+                <ImagePreset image={article.content.image} />
+              </div>
               <div>
                 <h2>{article.content.title}</h2>
                 {!!article.content.gender?.trim().length && (

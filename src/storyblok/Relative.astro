@@ -1,11 +1,14 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import ImagePreset from "../components/ImagePreset.astro";
 
 const { blok } = Astro.props;
 ---
 
 <section {...storyblokEditable(blok)} class="flex flex-wrap gap-2 mb-10">
-    <img class="aspect-[4/3] object-cover max-w-80 rounded-md" src={blok.image.filename} />
+  <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
+    <ImagePreset image={blok.image} />
+  </div>
   <div>
     <h3>{blok.name}</h3>
     <a class="underline underline-offset-2" href=`/${blok.link.cached_url}`>More about me...</a>

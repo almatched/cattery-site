@@ -1,61 +1,55 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import { Image } from "astro:assets";
+import ImagePreset from "../components/ImagePreset.astro";
 
 const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);
 ---
 
 <article {...storyblokEditable(blok)}>
-    <section class="flex flex-wrap gap-2 mb-5">
-      <Image
-        class="aspect-[4/3] max-w-80 object-cover rounded-md"
-        alt={blok.image.alt ?? ""}
-        inferSize
-        src={blok.image.filename + "/m/500x0"}
-      />
-      <div>
-        <h1>
-          {blok.title}
-        </h1>
-        {
-          !!blok.gender?.trim().length && (
-            <div class="mb-2">
-              <p class="font-bold">{blok.gender_title}</p>
-              <p>{blok.gender}</p>
-            </div>
-          )
-        }
-        {
-          !!blok.birthdate?.trim().length && (
-            <div class="mb-2">
-              <p class="font-bold">{blok.birthdate_title}</p>
-              <p>{blok.birthdate.slice(0, 10)}</p>
-            </div>
-          )
-        }
-        {
-          !!blok.price?.trim().length && (
-            <div class="mb-2">
-              <p class="font-bold">{blok.price_title}</p>
-              <p>{blok.price}</p>
-            </div>
-          )
-        }
-      </div>
-    </section>
-    {
-      renderedRichText?.trim().length !== 0 && (
-        <section>
-          <h2 class="font-bold">{blok.description_title}</h2>
-          <div
-            class="mb-5 prose dark:prose-invert"
-            set:html={renderedRichText}
-          />
-        </section>
-      )
-    }
+  <section class="flex flex-wrap gap-2 mb-5">
+    <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
+      <ImagePreset image={blok.image} />
+    </div>
+    <div>
+      <h1>
+        {blok.title}
+      </h1>
+      {
+        !!blok.gender?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.gender_title}</p>
+            <p>{blok.gender}</p>
+          </div>
+        )
+      }
+      {
+        !!blok.birthdate?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.birthdate_title}</p>
+            <p>{blok.birthdate.slice(0, 10)}</p>
+          </div>
+        )
+      }
+      {
+        !!blok.price?.trim().length && (
+          <div class="mb-2">
+            <p class="font-bold">{blok.price_title}</p>
+            <p>{blok.price}</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+  {
+    renderedRichText?.trim().length !== 0 && (
+      <section>
+        <h2 class="font-bold">{blok.description_title}</h2>
+        <div class="mb-5 prose dark:prose-invert" set:html={renderedRichText} />
+      </section>
+    )
+  }
   {
     !!blok.parents?.length && (
       <section>
@@ -90,11 +84,8 @@ const renderedRichText = renderRichText(blok.description);
         <h2>{blok.gallery_title}</h2>
         <ul class="flex flex-wrap gap-1">
           {blok.gallery?.map((image) => (
-            <li>
-              <img
-                class="aspect-[4/3] object-cover max-w-80 rounded-sm"
-                src={image.filename}
-              />
+            <li class="aspect-[4/3] max-w-56 w-full rounded-md overflow-hidden">
+              <ImagePreset image={image} />
             </li>
           ))}
         </ul>

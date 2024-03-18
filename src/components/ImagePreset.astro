@@ -1,0 +1,11 @@
+---
+import { Image } from "astro:assets";
+
+const props = Astro.props;
+---
+<Image
+  src={props.image.filename + "/m/500x0"}
+  alt={props.image.alt ?? ""}
+  inferSize
+  class="object-cover object-center w-full h-full"
+/>
