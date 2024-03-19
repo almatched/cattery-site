@@ -3,7 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
-const { language, langSwitch, pageTitle } = Astro.props;
+const { language, langSwitch, metaTitle, metaDescription } = Astro.props;
 ---
 
 <script is:inline>
@@ -35,10 +35,11 @@ const { language, langSwitch, pageTitle } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{pageTitle}</title>
+    <title>{metaTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col">
     <div class="max-w-screen-md mx-auto w-full px-6 mb-5">

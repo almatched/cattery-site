@@ -25,6 +25,6 @@ const { data } = await storyblokApi.get(
 const story = data.story;
 ---
 
-<BaseLayout langSwitch={langSwitch} language={language} pageTitle={story.content.title}>
+<BaseLayout langSwitch={langSwitch} language={language} metaTitle={story.content.meta_title} metaDescription={story.content.meta_description}>
   <StoryblokComponent language={language} blok={story.content} />
 </BaseLayout>
