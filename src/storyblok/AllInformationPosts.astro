@@ -6,12 +6,15 @@ import isPreview from "@/utils/isPreview";
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
-const { data: startPageData } = await storyblokApi.get('cdn/stories/information', {
-  version: isPreview() ? "draft" : "published",
-  language,
-});
+const { data: startPageData } = await storyblokApi.get(
+  "cdn/stories/information",
+  {
+    version: isPreview() ? "draft" : "published",
+    language,
+  }
+);
 
-const { data: itemsData} = await storyblokApi.get(`cdn/stories`, {
+const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   version: isPreview() ? "draft" : "published",
   starts_with: "information/",
   is_startpage: false,
@@ -30,18 +33,21 @@ const articles = itemsData.stories;
         articles?.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li class="mb-10">
-              <h2>{article.content.title}</h2>
-              <p>{article.content.description}</p>
-              <a
-                class="underline underline-offset-2"
-                href={getTransLink(
-                  language,
-                  `/information/${article.content.slug}`
-                )}
-              >
-                {article.content.link_title}
-              </a>
+            <li class="mb-10 border rounded-md px-10 py-5 relative hover:opacity-50">
+              <section>
+                <h2>
+                  <a
+                    href={getTransLink(
+                      language,
+                      `/information/${article.content.slug}`
+                    )}
+                  >
+                    <span class="absolute inset-0 z-10" aria-hidden="true" />
+                    {article.content.title}
+                  </a>
+                </h2>
+                <p>{article.content.meta_description}</p>
+              </section>
             </li>
           );
         })

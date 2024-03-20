@@ -32,12 +32,22 @@ const articles = itemsData.stories;
         articles?.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li class="flex flex-wrap gap-3 mb-10">
+            <li class="relative flex flex-wrap gap-3 mb-10 hover:opacity-50">
               <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
                 <ImagePreset image={article.content.image} />
               </div>
               <div>
-                <h2>{article.content.title}</h2>
+                <h2>
+                  <a
+                    href={getTransLink(
+                      language,
+                      `/profiles/${article.content.slug}`
+                    )}
+                  >
+                  <span class="absolute inset-0 z-10" aria-hidden="true" />
+                    {article.content.title}
+                  </a>
+                </h2>
                 {!!article.content.gender?.trim().length && (
                   <div class="mb-2">
                     <p class="font-bold">{article.content.gender_title}</p>
@@ -56,15 +66,6 @@ const articles = itemsData.stories;
                     <p>{article.content.price}</p>
                   </div>
                 )}
-                <a
-                  class="underline underline-offset-2"
-                  href={getTransLink(
-                    language,
-                    `/profiles/${article.content.slug}`
-                  )}
-                >
-                  {article.content.link_title}
-                </a>
               </div>
             </li>
           );
