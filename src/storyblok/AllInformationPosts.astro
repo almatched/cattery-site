@@ -34,7 +34,6 @@ const articles = itemsData.stories;
           article.content.slug = article.slug;
           return (
             <li class="mb-10 border rounded-md px-10 py-5 relative hover:opacity-50">
-              <section>
                 <h2>
                   <a
                     href={getTransLink(
@@ -47,7 +46,6 @@ const articles = itemsData.stories;
                   </a>
                 </h2>
                 <p>{article.content.meta_description}</p>
-              </section>
             </li>
           );
         })
