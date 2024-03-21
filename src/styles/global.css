@@ -74,10 +74,10 @@
     @apply bg-background text-foreground;
   }
   h1 {
-    @apply mb-3 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply mb-3 scroll-m-20 text-4xl font-bold tracking-tight;
   }
   h2 {
-    @apply mb-3 scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0;
+    @apply mb-3 scroll-m-20 text-3xl font-semibold tracking-tight;
   }
   h3 {
     @apply mb-3 scroll-m-20 text-2xl font-semibold tracking-tight;

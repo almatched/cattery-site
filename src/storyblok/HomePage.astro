@@ -6,7 +6,7 @@ const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.content);
 ---
 
-<article {...storyblokEditable(blok)} class="prose dark:prose-invert">
+<article {...storyblokEditable(blok)}>
   <h1>{blok.title}</h1>
   <section class="mb-5" set:html={renderedRichText} />
   {
