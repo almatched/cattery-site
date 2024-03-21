@@ -26,17 +26,17 @@ const articles = itemsData.stories;
 
 <section {...storyblokEditable(blok)}>
   {!!title.trim().length && <h1 class="sr-only">{title}</h1>}
-  <ul>
+  <ul class="gap-5 grid grid-cols-1 min-[450px]:grid-cols-2 text-sm min-[450px]:text-base">
     {
       articles?.length &&
         articles?.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li class="flex flex-wrap gap-3 relative mb-10 hover:opacity-50">
-              <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
+            <li class="relative hover:opacity-50 border rounded-md">
+              <div class="aspect-[4/3] w-full rounded-t-md overflow-hidden mb-2">
                 <ImagePreset image={article.content.image} />
               </div>
-              <div>
+              <div class="mx-5 mb-2 min-[450px]:mb-5">
                 <h2>
                   <a
                     href={getTransLink(
@@ -44,7 +44,7 @@ const articles = itemsData.stories;
                       `/profiles/${article.content.slug}`
                     )}
                   >
-                  <span class="absolute inset-0 z-10" aria-hidden="true" />
+                    <span class="absolute inset-0 z-10" aria-hidden="true" />
                     {article.content.title}
                   </a>
                 </h2>
