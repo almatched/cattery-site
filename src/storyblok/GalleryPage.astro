@@ -7,7 +7,7 @@ const { blok } = Astro.props;
 
 <article {...storyblokEditable(blok)}>
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
-    <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3">
+    <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
     {
       blok.gallery?.map((image) => (
         <li class="aspect-[4/3] w-full rounded-md overflow-hidden">
