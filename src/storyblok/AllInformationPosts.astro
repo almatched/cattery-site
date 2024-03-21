@@ -33,7 +33,7 @@ const articles = itemsData.stories;
         articles?.map((article) => {
           article.content.slug = article.slug;
           return (
-            <li class="mb-10 border rounded-md px-10 py-5 relative hover:opacity-50">
+            <li class="mb-10 border rounded-md px-5 sm:px-10 py-3 sm:py-5 relative hover:opacity-50">
                 <h2>
                   <a
                     href={getTransLink(
@@ -45,7 +45,7 @@ const articles = itemsData.stories;
                     {article.content.title}
                   </a>
                 </h2>
-                <p>{article.content.meta_description}</p>
+                <p class="line-clamp-4 sm:line-clamp-3">{article.content.meta_description}</p>
             </li>
           );
         })
