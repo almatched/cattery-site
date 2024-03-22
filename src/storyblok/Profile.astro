@@ -9,7 +9,7 @@ const renderedRichText = renderRichText(blok.description);
 
 <article {...storyblokEditable(blok)}>
   <section class="flex flex-wrap gap-5 mb-5">
-    <div class="aspect-[4/3] max-w-80 w-full rounded-md overflow-hidden">
+    <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
       <ImagePreset image={blok.image} />
     </div>
     <div>
@@ -84,7 +84,7 @@ const renderedRichText = renderRichText(blok.description);
         <h2>{blok.gallery_title}</h2>
         <ul class="flex flex-wrap gap-1">
           {blok.gallery?.map((image) => (
-            <li class="aspect-[4/3] max-w-56 w-full rounded-md overflow-hidden">
+            <li class="aspect-[5/7] max-w-56 w-full rounded-md overflow-hidden">
               <ImagePreset image={image} />
             </li>
           ))}

@@ -10,7 +10,7 @@ const { blok } = Astro.props;
     <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
     {
       blok.gallery?.map((image) => (
-        <li class="aspect-[4/3] w-full rounded-md overflow-hidden">
+        <li class="aspect-[5/7] w-full rounded-md overflow-hidden">
           <ImagePreset image={image} />
         </li>
       ))
