@@ -1,5 +1,5 @@
 ---
-import { NavigationDialog } from "./NavigationDialog.jsx";
+import { NavigationMenu } from "./NavigationMenu.jsx";
 import isPreview from "@/utils/isPreview";
 
 import { languages } from "../utils/langs.js";
@@ -15,6 +15,6 @@ const { data } = await storyblokApi.get("cdn/stories/navbar-config", {
 const headerMenu = data?.story?.content?.items;
 ---
 
-<header class="min-h-24 flex items-center">
-  <NavigationDialog headerMenu={headerMenu}, languages={languages}, langSwitch={langSwitch} client:idle />
+<header class="min-h-24 flex gap-3 items-center justify-between">
+  <NavigationMenu headerMenu={headerMenu}, languages={languages}, langSwitch={langSwitch} client:load />
 </header>

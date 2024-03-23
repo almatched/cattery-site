@@ -4,13 +4,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu.tsx";
+import { cn } from "@/lib/utils"
 
-export function Navigation({ data }) {
+export function NavigationList({ data }) {
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex-col lg:flex-row flex gap-5 text-xl justify-center">
+    <NavigationMenu className="hidden lg:block">
+      <NavigationMenuList className="text-lg flex items-center gap-5">
         {data?.map((menu, key) => (
-          <NavigationMenuItem key={key} className="bg-accent p-2 rounded-md">
+          <NavigationMenuItem key={key} className="bg-accent px-3 py-2 rounded-md hover:opacity-75">
             <NavigationMenuLink asChild>
               <a
                 href={
