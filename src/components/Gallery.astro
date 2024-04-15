@@ -1,0 +1,15 @@
+---
+import ImagePreset from "./ImagePreset.astro";
+
+const { images } = Astro.props;
+---
+
+<ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
+    {
+      images?.reverse().map((image) => (
+        <li class="aspect-[5/7] w-full rounded-md overflow-hidden">
+          <ImagePreset image={image} />
+        </li>
+      ))
+    }
+  </ul>

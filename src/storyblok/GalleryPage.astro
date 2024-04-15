@@ -1,19 +1,11 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import ImagePreset from "../components/ImagePreset.astro";
+import Gallery from "../components/Gallery.astro";
 
 const { blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
-    <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
-    {
-      blok.gallery?.reverse().map((image) => (
-        <li class="aspect-[5/7] w-full rounded-md overflow-hidden">
-          <ImagePreset image={image} />
-        </li>
-      ))
-    }
-  </ul>
+  <Gallery images={blok.gallery} />
 </article>

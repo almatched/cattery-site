@@ -1,7 +1,8 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import ImagePreset from "../components/ImagePreset.astro";
+import ImagePreset from "@/components/ImagePreset.astro";
+import Gallery from "@/components/Gallery.astro";
 
 const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);
@@ -82,13 +83,7 @@ const renderedRichText = renderRichText(blok.description);
     !!blok.gallery?.length && (
       <section>
         <h2>{blok.gallery_title}</h2>
-        <ul class="flex flex-wrap gap-1">
-          {blok.gallery?.reverse().map((image) => (
-            <li class="aspect-[5/7] max-w-56 w-full rounded-md overflow-hidden">
-              <ImagePreset image={image} />
-            </li>
-          ))}
-        </ul>
+        <Gallery images={blok.gallery} />
       </section>
     )
   }
