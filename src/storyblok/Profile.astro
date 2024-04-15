@@ -83,7 +83,7 @@ const renderedRichText = renderRichText(blok.description);
       <section>
         <h2>{blok.gallery_title}</h2>
         <ul class="flex flex-wrap gap-1">
-          {blok.gallery?.map((image) => (
+          {blok.gallery?.reverse().map((image) => (
             <li class="aspect-[5/7] max-w-56 w-full rounded-md overflow-hidden">
               <ImagePreset image={image} />
             </li>
