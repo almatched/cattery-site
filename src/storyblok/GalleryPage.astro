@@ -9,7 +9,7 @@ const { blok } = Astro.props;
   {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
     <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
     {
-      blok.gallery?.map((image) => (
+      blok.gallery?.reverse().map((image) => (
         <li class="aspect-[5/7] w-full rounded-md overflow-hidden">
           <ImagePreset image={image} />
         </li>
