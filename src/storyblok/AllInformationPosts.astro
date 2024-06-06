@@ -22,33 +22,39 @@ const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
 });
 
 const title = startPageData.story.content.title;
+const noContentFallback = startPageData.story.content.content_absent;
 const articles = itemsData.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
   {!!title.trim().length && <h1 class="sr-only">{title}</h1>}
-  <ul>
-    {
-      articles?.length &&
-        articles?.reverse().map((article) => {
+  {
+    articles?.length === 0 ? (
+      <p class="text-2xl">{noContentFallback}</p>
+    ) : (
+      <ul>
+        {articles?.reverse().map((article) => {
           article.content.slug = article.slug;
           return (
             <li class="mb-10 border rounded-md px-5 sm:px-10 py-3 sm:py-5 relative hover:opacity-50">
-                <h2>
-                  <a
-                    href={getTransLink(
-                      language,
-                      `/information/${article.content.slug}`
-                    )}
-                  >
-                    <span class="absolute inset-0 z-10" aria-hidden="true" />
-                    {article.content.title}
-                  </a>
-                </h2>
-                <p class="line-clamp-4 sm:line-clamp-3">{article.content.meta_description}</p>
+              <h2>
+                <a
+                  href={getTransLink(
+                    language,
+                    `/information/${article.content.slug}`
+                  )}
+                >
+                  <span class="absolute inset-0 z-10" aria-hidden="true" />
+                  {article.content.title}
+                </a>
+              </h2>
+              <p class="line-clamp-4 sm:line-clamp-3">
+                {article.content.meta_description}
+              </p>
             </li>
           );
-        })
-    }
-  </ul>
+        })}
+      </ul>
+    )
+  }
 </section>
