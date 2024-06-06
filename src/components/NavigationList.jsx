@@ -13,7 +13,7 @@ export function NavigationList({ data }) {
           <NavigationMenuItem key={key}>
             <NavigationMenuLink asChild>
               <a
-                className="bg-accent px-3 py-2 rounded-md hover:opacity-75"
+                className="text-3xl font-semibold hover:opacity-75"
                 href={
                   menu.link.cached_url.startsWith("/")
                     ? menu.link.cached_url
