@@ -39,7 +39,8 @@ export default defineConfig({
       'menu-link': 'storyblok/MenuLink',
       'all-information-posts': 'storyblok/AllInformationPosts',
       'information-post': 'storyblok/InformationPost',
-      relative: 'storyblok/Relative'
+      relative: 'storyblok/Relative',
+      'image-link': 'storyblok/ImageLink'
     },
     apiOptions: {
       region: 'eu'

@@ -3,7 +3,7 @@ import { languages } from './langs'
 export default function parseUrl(url) {
   //converting the current url to an array based on '/'
   let urlToArray = url?.split('/')
-  //Setting the fallback language to be english
+  //Setting the fallback language to be german
   let defaultLang = 'de'
   //Checking if current url contains a known language
   let isKnownLang = languages.some((l) => l === urlToArray?.[0])

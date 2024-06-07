@@ -1,0 +1,22 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { Image } from "astro:assets";
+
+const { blok } = Astro.props;
+---
+
+<a {...storyblokEditable(blok)} href=`${blok.link.cached_url}`>
+  <div class="group aspect-[5/7] w-52 rounded-md overflow-hidden relative">
+    <div
+      class="bg-accent text-lg absolute w-full p-2 opacity-60 group-hover:opacity-80"
+    >
+      {blok.cta_text}
+    </div>
+    <Image
+      src={blok.image.filename + "/m/"}
+      alt={blok.image.alt ?? ""}
+      inferSize
+      class="object-cover object-center w-full h-full"
+    />
+  </div>
+</a>
