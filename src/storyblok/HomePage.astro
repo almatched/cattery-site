@@ -9,7 +9,7 @@ const renderedRichText = renderRichText(blok.content);
 <article {...storyblokEditable(blok)}>
   <h1>{blok.title}</h1>
   <section class="mb-10" set:html={renderedRichText} />
-  <div class="flex gap-5 mb-10">
+  <div class="flex gap-5 mb-10 flex-wrap">
     {
       blok.cta_list?.map((blokItem) => (
         <StoryblokComponent language={language} blok={blokItem} />

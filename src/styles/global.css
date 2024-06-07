@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 88%; /* soft gray */
+    --foreground: 0 0% 20%; /* soft black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 88%; /* soft gray */
+    --card-foreground: 0 0% 20%; /* soft black */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 88%; /* soft gray */
+    --popover-foreground: 0 0% 20%; /* soft black */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 60% 50%; /* slate blue */
+    --primary-foreground: 0 0% 20%; /* soft black */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 180 76% 39%; /* teal */
+    --secondary-foreground: 0 0% 20%; /* soft black */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 70%; /* medium gray */
+    --muted-foreground: 0 0% 20%; /* soft black */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 16 100% 66%; /* coral */
+    --accent-foreground: 0 0% 88%; /* soft gray */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -36,26 +36,26 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 15%; /* deep charcoal */
+    --foreground: 45 60% 95%; /* warm ivory */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 15%; /* deep charcoal */
+    --card-foreground: 45 60% 95%; /* warm ivory */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 15%; /* deep charcoal */
+    --popover-foreground: 45 60% 95%; /* warm ivory */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 16 100% 66%; /* bright coral */
+    --primary-foreground: 45 60% 95%; /* warm ivory */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 174 100% 50%; /* turquoise */
+    --secondary-foreground: 45 60% 95%; /* warm ivory */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 20% 20%; /* midnight blue */
+    --muted-foreground: 45 60% 95%; /* warm ivory */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 270 60% 70%; /* lavender */
+    --accent-foreground: 0 0% 20%; /* charcoal */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;

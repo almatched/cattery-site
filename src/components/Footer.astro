@@ -12,7 +12,7 @@ const { data } = await storyblokApi.get("cdn/stories/footer-config", {
 const socialLinks = data?.story?.content?.items;
 ---
 
-<footer class="mt-auto bg-accent py-8 px-6 flex flex-col items-center">
+<footer class="mt-auto bg-muted py-8 px-6 flex flex-col items-center">
   <ul class="flex flex-wrap gap-5">
     {
       socialLinks?.map((blok) => (
