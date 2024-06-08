@@ -16,7 +16,7 @@ const socialLinks = data?.story?.content?.items;
   <ul class="flex flex-wrap gap-5">
     {
       socialLinks?.map((blok) => (
-        <li class="underline underline-offset-2">
+        <li class="underline underline-offset-2 hover:text-secondary">
           <StoryblokComponent language={language} blok={blok} />
         </li>
       ))
