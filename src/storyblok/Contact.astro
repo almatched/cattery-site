@@ -7,7 +7,7 @@ const { language, blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
-  {!!blok.title?.trim().length && <h1>{blok.title}</h1>}
+  {!!blok.title?.trim().length && <h1 class="mb-10">{blok.title}</h1>}
   {
     !!blok.email?.trim().length && (
       <div class="mb-5">
@@ -31,7 +31,7 @@ const { language, blok } = Astro.props;
         <h2>{blok.links_title}</h2>
         <ul class="flex flex-wrap gap-5">
           {blok.links?.map((blok) => (
-            <li class="underline underline-offset-2">
+            <li class="underline underline-offset-2 hover:text-secondary">
               <StoryblokComponent language={language} blok={blok} />
             </li>
           ))}
