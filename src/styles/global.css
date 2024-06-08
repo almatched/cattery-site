@@ -14,10 +14,10 @@
     --popover-foreground: 0 0% 20%; /* soft black */
 
     --primary: 210 60% 50%; /* slate blue */
-    --primary-foreground: 0 0% 20%; /* soft black */
+    --primary-foreground: 0 0% 88%; /* soft gray */
 
     --secondary: 180 76% 39%; /* teal */
-    --secondary-foreground: 0 0% 20%; /* soft black */
+    --secondary-foreground: 0 0% 88%; /* soft gray */
 
     --muted: 0 0% 70%; /* medium gray */
     --muted-foreground: 0 0% 20%; /* soft black */
@@ -45,8 +45,8 @@
     --popover: 0 0% 15%; /* deep charcoal */
     --popover-foreground: 45 60% 95%; /* warm ivory */
 
-    --primary: 16 100% 66%; /* bright coral */
-    --primary-foreground: 45 60% 95%; /* warm ivory */
+    --primary: 270 60% 70%; /* lavender */
+    --primary-foreground: 0 0% 20%; /* charcoal */
 
     --secondary: 174 100% 50%; /* turquoise */
     --secondary-foreground: 45 60% 95%; /* warm ivory */
@@ -54,8 +54,8 @@
     --muted: 210 20% 20%; /* midnight blue */
     --muted-foreground: 45 60% 95%; /* warm ivory */
 
-    --accent: 270 60% 70%; /* lavender */
-    --accent-foreground: 0 0% 20%; /* charcoal */
+    --accent: 16 100% 66%; /* bright coral */
+    --accent-foreground: 45 60% 95%; /* warm ivory */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;

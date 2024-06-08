@@ -26,7 +26,7 @@ export function NavigationMenu({ headerMenu, languages, langSwitch }) {
                         {headerMenu?.map((menu, key) => (
                             <a
                                 key={key}
-                                className="bg-accent py-2 w-full rounded-md hover:opacity-75 font-semibold"
+                                className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold"
                                 href={
                                     menu.link.cached_url.startsWith("/")
                                         ? menu.link.cached_url
