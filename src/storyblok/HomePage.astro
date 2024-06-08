@@ -1,16 +1,27 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { Image } from "astro:assets";
 
 const { language, blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
-  <section class="mb-10">
-    <h1>{blok.title}</h1>
-    <p>{blok.content}</p>
+  <section class="mb-20">
+    <h1 class="mb-5 sm:mb-10">{blok.title}</h1>
+    <div class="grid sm:grid-cols-2 gap-8 sm:gap-4">
+      <p>{blok.content}</p>
+      <div class="rounded-md overflow-hidden max-w-72 justify-self-center">
+        <Image
+          src={blok?.main_image.filename + "/m/"}
+          alt={blok?.main_image.alt ?? ""}
+          inferSize
+          class="object-cover object-center w-full h-full"
+        />
+      </div>
+    </div>
   </section>
-  <div class="flex gap-5 mb-10 flex-wrap">
+  <div class="flex gap-5 mb-10 flex-wrap justify-center">
     {
       blok.cta_list?.map((blokItem) => (
         <StoryblokComponent language={language} blok={blokItem} />
