@@ -45,8 +45,8 @@
     --popover: 0 0% 15%; /* deep charcoal */
     --popover-foreground: 45 60% 95%; /* warm ivory */
 
-    --primary: 270 60% 70%; /* lavender */
-    --primary-foreground: 0 0% 20%; /* charcoal */
+    --primary: 16 100% 66%; /* bright coral */
+    --primary-foreground: 45 60% 95%; /* warm ivory */
 
     --secondary: 174 100% 50%; /* turquoise */
     --secondary-foreground: 45 60% 95%; /* warm ivory */
@@ -54,8 +54,8 @@
     --muted: 210 20% 20%; /* midnight blue */
     --muted-foreground: 45 60% 95%; /* warm ivory */
 
-    --accent: 16 100% 66%; /* bright coral */
-    --accent-foreground: 45 60% 95%; /* warm ivory */
+    --accent: 270 60% 70%; /* lavender */
+    --accent-foreground: 0 0% 20%; /* charcoal */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
