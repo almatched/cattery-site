@@ -16,7 +16,7 @@ export function NavigationMenu({ headerMenu, languages, langSwitch }) {
 
             <Sheet>
                 <SheetTrigger asChild className="lg:hidden">
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className="border-accent">
                         <AlignJustify />
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
@@ -26,7 +26,7 @@ export function NavigationMenu({ headerMenu, languages, langSwitch }) {
                         {headerMenu?.map((menu, key) => (
                             <a
                                 key={key}
-                                className="bg-accent py-2 w-full rounded-md hover:opacity-75"
+                                className="bg-accent py-2 w-full rounded-md hover:opacity-75 font-semibold"
                                 href={
                                     menu.link.cached_url.startsWith("/")
                                         ? menu.link.cached_url
