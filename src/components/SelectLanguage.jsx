@@ -11,7 +11,7 @@ export function SelectLanguage({ data, langSwitch }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" className="border-accent">
           <Globe />
           <span className="sr-only">Toggle language select</span>
         </Button>
