@@ -6,8 +6,20 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
-const env = loadEnv("", process.cwd(), 'STORYBLOK');
+import dotenvExpand from "dotenv-expand"
 
+const storyblokEnv = loadEnv("", process.cwd(), 'STORYBLOK');
+
+// check if in dev environment
+const mode = storyblokEnv.STORYBLOK_ENV;
+const isDevMode = mode === "development";
+
+// vite doesn't expose process.env and @vercel/postgres searches for process.env.POSTGRES_URL variable
+// expose .env variables via process.env. with POSTGRES prefix
+if (isDevMode) {
+  const env = loadEnv(mode, process.cwd(), 'POSTGRES');
+  dotenvExpand.expand({ parsed: env });
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,8 +35,8 @@ export default defineConfig({
   },
   site: "https://www.mainecoon-kitten.de",
   integrations: [storyblok({
-    accessToken: env.STORYBLOK_TOKEN,
-    bridge: env.STORYBLOK_IS_PREVIEW === "yes",
+    accessToken: storyblokEnv.STORYBLOK_TOKEN,
+    bridge: storyblokEnv.STORYBLOK_IS_PREVIEW === "yes",
     components: {
       page: 'storyblok/Page',
       grid: 'storyblok/Grid',
@@ -48,11 +60,11 @@ export default defineConfig({
   }), react(), tailwind({
     applyBaseStyles: false
   }), sitemap()],
-  ...(env.STORYBLOK_IS_PREVIEW === "yes" && {
+  ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "yes" && {
     output: "server",
     adapter: vercel()
   }),
-  ...(env.STORYBLOK_ENV === 'development' && {
+  ...(isDevMode && {
     vite: {
       plugins: [basicSsl()],
       server: {
