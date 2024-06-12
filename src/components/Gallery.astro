@@ -28,9 +28,9 @@ const { images } = Astro.props;
 <ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
     {
       myImages?.reverse().map((image) => (
-        <li class="aspect-[5/7] w-full rounded-md overflow-hidden">
+        <li class="aspect-square rounded-md overflow-hidden">
           {/* <ImagePreset image={image} /> */}
-          <img src={image?.url} className="w-48 h-48" />
+          <img src={image?.url} class="w-full h-full object-cover" />
         </li>
       ))
     }
