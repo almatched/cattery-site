@@ -1,37 +1,27 @@
 ---
 import ImagePreset from "./ImagePreset.astro";
 
-
 import { db } from "@/db/index";
 
 async function getMyImages() {
-  // const user = auth();
-
-  // if (!user.userId) throw new Error("Unauthorized");
-
-  // const images = await db.query.images.findMany({
-  //   orderBy: (model, { desc }) => desc(model.id),
-  // });
-
-  const images = await db.query.images.findMany();
+  const images = await db.query.images.findMany({
+    orderBy: (model, { desc }) => desc(model.id),
+  });
 
   return images;
 }
 
 const myImages = await getMyImages();
 
-console.log(myImages[0].url);
-
-const { images } = Astro.props;
+// const { images } = Astro.props;
 ---
 
-<ul class="gap-3 justify-center grid grid-cols-2 sm:grid-cols-3">
-    {
-      myImages?.reverse().map((image) => (
-        <li class="aspect-square rounded-md overflow-hidden">
-          {/* <ImagePreset image={image} /> */}
-          <img src={image?.url} class="w-full h-full object-cover" />
-        </li>
-      ))
-    }
-  </ul>
+<ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
+  {
+    myImages?.map((image) => (
+      <li class="aspect-square rounded-md overflow-hidden">
+        <ImagePreset src={image?.url} alt={image?.name} />
+      </li>
+    ))
+  }
+</ul>

@@ -11,7 +11,7 @@ const renderedRichText = renderRichText(blok.description);
 <article {...storyblokEditable(blok)}>
   <section class="flex flex-wrap gap-5 mb-5">
     <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
-      <ImagePreset image={blok.image} />
+      <ImagePreset src={blok.image?.filename} alt={blok.image?.alt} />
     </div>
     <div>
       <h1>
