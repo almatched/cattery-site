@@ -66,7 +66,11 @@ export default defineConfig({
     adapter: vercel(),
   } : {
     output: "hybrid",
-    adapter: vercel(),
+    adapter: vercel({
+      isr: {
+        exclude: ["/gallery"],
+      }
+    }),
   }),
   ...(isDevMode && {
     vite: {
