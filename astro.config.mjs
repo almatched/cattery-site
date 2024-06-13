@@ -31,7 +31,8 @@ export default defineConfig({
   },
   redirects: {
     '/': '/home',
-    '/en/': '/en/home'
+    '/en/': '/en/home',
+    '/ru/': '/ru/home',
   },
   site: "https://www.mainecoon-kitten.de",
   integrations: [storyblok({
