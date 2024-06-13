@@ -62,11 +62,14 @@ export default defineConfig({
   }), sitemap()],
   ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "yes" && {
     output: "server",
-    adapter: vercel()
+    adapter: vercel(),
   }),
   ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "no" && {
     output: "hybrid",
-    adapter: vercel()
+    adapter: vercel({
+      isr: true,
+      expiration: 60,
+    }),
   }),
   ...(isDevMode && {
     vite: {
