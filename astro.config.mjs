@@ -64,6 +64,10 @@ export default defineConfig({
     output: "server",
     adapter: vercel()
   }),
+  ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "no" && {
+    output: "hybrid",
+    adapter: vercel()
+  }),
   ...(isDevMode && {
     vite: {
       plugins: [basicSsl()],
