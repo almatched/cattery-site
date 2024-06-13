@@ -1,13 +1,11 @@
 ---
-export const prerender = false;
-
 import { useStoryblokApi } from "@storyblok/astro";
 // @ts-ignore
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import parseUrl from '../utils/parseUrl'
-import isPreview from '../utils/isPreview'
-import generateStaticPaths from '../utils/generateStaticPaths'
+import parseUrl from "../utils/parseUrl";
+import isPreview from "../utils/isPreview";
+import generateStaticPaths from "../utils/generateStaticPaths";
 
 export async function getStaticPaths() {
   return await generateStaticPaths();
@@ -15,8 +13,15 @@ export async function getStaticPaths() {
 
 const params = Astro.params;
 // let props = isPreview() ? parseUrl(params?.slug) : Astro.props
-let props = parseUrl(params?.slug)
+let props = parseUrl(params?.slug);
 const { slug, language, langSwitch } = props;
+console.log("slug", slug);
+export let prerender;
+if (slug.slice("/").includes("gallery")) {
+  prerender = false;
+} else {
+  prerender = true;
+}
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get(
   `cdn/stories/${slug === undefined ? "home" : slug}`,
@@ -28,6 +33,11 @@ const { data } = await storyblokApi.get(
 const story = data.story;
 ---
 
-<BaseLayout langSwitch={langSwitch} language={language} metaTitle={story.content.meta_title} metaDescription={story.content.meta_description}>
+<BaseLayout
+  langSwitch={langSwitch}
+  language={language}
+  metaTitle={story.content.meta_title}
+  metaDescription={story.content.meta_description}
+>
   <StoryblokComponent language={language} blok={story.content} />
 </BaseLayout>
