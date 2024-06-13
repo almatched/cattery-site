@@ -1,10 +1,9 @@
 ---
-export const prerender = true;
-
 import ImagePreset from "./ImagePreset.astro";
-import { getMyImages } from "@/pages/queries";
+import { GET } from "@/pages/queries.ts";
 
-const myImages = await getMyImages();
+let response = await GET(Astro);
+const myImages = await response.json();
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
