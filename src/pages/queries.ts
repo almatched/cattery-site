@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import { db } from "@/db/index";
 import type { APIRoute } from "astro";
 
