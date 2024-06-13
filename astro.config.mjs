@@ -60,15 +60,14 @@ export default defineConfig({
   }), react(), tailwind({
     applyBaseStyles: false
   }), sitemap()],
-  ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "yes" && {
+  ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "yes" ? {
     output: "server",
     adapter: vercel(),
-  }),
-  ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "no" && {
+  } : {
     output: "hybrid",
     adapter: vercel({
       isr: true,
-      expiration: 60,
+      expiration: 10,
     }),
   }),
   ...(isDevMode && {
