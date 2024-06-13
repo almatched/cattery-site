@@ -61,10 +61,10 @@ export default defineConfig({
     applyBaseStyles: false
   }), sitemap()],
   ...(storyblokEnv.STORYBLOK_IS_PREVIEW === "yes" ? {
-    output: "server",
+    output: "hybrid",
     adapter: vercel(),
   } : {
-    output: "hybrid",
+    output: "server",
     adapter: vercel(),
   }),
   ...(isDevMode && {
