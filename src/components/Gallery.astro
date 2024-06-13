@@ -2,16 +2,7 @@
 export const prerender = false;
 
 import ImagePreset from "./ImagePreset.astro";
-
-import { db } from "@/db/index";
-
-async function getMyImages() {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-  });
-
-  return images;
-}
+import { getMyImages } from "@/pages/queries";
 
 const myImages = await getMyImages();
 
