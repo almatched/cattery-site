@@ -65,10 +65,7 @@ export default defineConfig({
     adapter: vercel(),
   } : {
     output: "hybrid",
-    adapter: vercel({
-      isr: true,
-      expiration: 10,
-    }),
+    adapter: vercel(),
   }),
   ...(isDevMode && {
     vite: {
