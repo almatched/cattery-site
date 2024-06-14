@@ -65,7 +65,7 @@ export default defineConfig({
     output: "server",
     adapter: vercel(),
   } : {
-    output: "hybrid",
+    output: "server",
     adapter: vercel({
       isr: {
         exclude: ["/gallery"],
