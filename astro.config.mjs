@@ -68,8 +68,9 @@ export default defineConfig({
     output: "server",
     adapter: vercel({
       isr: {
-        exclude: ["/gallery"],
-      }
+        // exclude: ["/gallery"],
+        expiration: 60,
+      },
     }),
   }),
   ...(isDevMode && {
