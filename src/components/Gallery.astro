@@ -1,14 +1,15 @@
 ---
 import ImagePreset from "./ImagePreset.astro";
-import { GET } from "@/pages/queries.ts";
+import { db } from "@/db/index";
 
-let response = await GET(Astro);
-const myImages = await response.json();
+const images = await db.query.images.findMany({
+  orderBy: (model, { desc }) => desc(model.id),
+});
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
   {
-    myImages?.map((image) => (
+    images?.map((image) => (
       <li class="aspect-square rounded-md overflow-hidden">
         <ImagePreset src={image?.url} alt={image?.name} />
       </li>
