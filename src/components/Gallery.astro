@@ -5,14 +5,27 @@ import { db } from "@/db/index";
 const images = await db.query.images.findMany({
   orderBy: (model, { desc }) => desc(model.id),
 });
+
+let lang = "de";
+const locale = Astro.url.pathname.split("/")[1]
+
+if (locale === "en") {
+  lang = "en";
+} else if (locale === "ru") {
+  lang = "ru"
+}
+
+const pathNameWihoutId = lang === "de" ? "/gallery/" : ("/" + lang + "/gallery/")
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
   {
     images?.map((image) => (
-      <li class="aspect-square rounded-md overflow-hidden">
-        <ImagePreset src={image?.url} alt={image?.name} />
-      </li>
+      <a href={pathNameWihoutId + image.id}>
+        <li class="aspect-square rounded-md overflow-hidden hover:cursor-pointer">
+          <ImagePreset src={image?.url} alt={image?.name} />
+        </li>
+      </a>
     ))
   }
 </ul>

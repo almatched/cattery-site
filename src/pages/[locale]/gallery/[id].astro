@@ -1,0 +1,34 @@
+---
+import { db } from "@/db/index";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getTransLink, languages } from "@/utils/langs";
+
+const { locale, id } = Astro.params;
+
+const idAsNumber = Number(id);
+
+if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
+
+const image = await db.query.images.findFirst({
+  where: (model, { eq }) => eq(model.id, idAsNumber),
+});
+
+const pathnameWithoutLocaleAsArray = Astro.url.pathname.split("/").slice(2);
+const pathnameWithSlash = "/" + pathnameWithoutLocaleAsArray.join("/");
+const langSwitch = {};
+
+languages.forEach((language) => {
+  langSwitch[language] = getTransLink(language, pathnameWithSlash);
+});
+---
+
+<BaseLayout
+  langSwitch={langSwitch}
+  language={locale}
+  metaTitle={"Image"}
+  metaDescription={"Image"}
+>
+  <div class="h-screen">
+    <img src={image.url} class="h-full w-full object-contain object-center" />
+  </div>
+</BaseLayout>

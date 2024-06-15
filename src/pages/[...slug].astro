@@ -5,11 +5,12 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import parseUrl from "../utils/parseUrl";
 import isPreview from "../utils/isPreview";
-import generateStaticPaths from "../utils/generateStaticPaths";
 
-export async function getStaticPaths() {
-  return await generateStaticPaths();
-}
+// use this when ssg, with ssr this will be skipped
+// import generateStaticPaths from "../utils/generateStaticPaths";
+// export async function getStaticPaths() {
+//   return await generateStaticPaths();
+// }
 
 const params = Astro.params;
 // this was used when building static pages with Astro instead of vercel
