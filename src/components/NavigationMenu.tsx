@@ -1,4 +1,4 @@
-import { NavigationList } from "./NavigationList.jsx";
+import { NavigationList } from "./NavigationList.tsx";
 import { SelectLanguage } from "./SelectLanguage.jsx";
 import { ModeToggle } from "./ModeToggle.tsx";
 import {
