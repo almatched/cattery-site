@@ -10,9 +10,10 @@ import {
 
 export function ModeToggle() {
   const changeTheme = (theme: "theme-light" | "dark" | "system") => {
-    const isDark =
+    const isDark: boolean =
       theme === "dark" ||
-      (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      (theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
     document.documentElement.classList.toggle("dark", isDark);
   };
 

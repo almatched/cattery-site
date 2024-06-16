@@ -6,8 +6,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Globe } from "lucide-react"
+import type { LangSwitch } from "@/lib/customTypes";
 
-export function SelectLanguage({ data, langSwitch }) {
+export function SelectLanguage({ languages, langSwitch }: { languages: string[], langSwitch: LangSwitch}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -17,7 +18,7 @@ export function SelectLanguage({ data, langSwitch }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {data?.map((lang: string, key: number) =>
+        {languages?.map((lang: string, key: number) =>
           <DropdownMenuItem key={key} className="p-0">
             <a href={langSwitch[lang]} className="w-full px-2 py-1.5">
               {lang}

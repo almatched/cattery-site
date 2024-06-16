@@ -1,20 +1,22 @@
 ---
-import { NavigationMenu } from "./NavigationMenu.jsx";
+import { NavigationMenu } from "./NavigationMenu.tsx";
 import isPreview from "@/utils/isPreview.ts";
 
 import { languages } from "../utils/langs.ts";
 import { useStoryblokApi } from "@storyblok/astro";
 
+import type { MenuLinkStoryblok, ConfigStoryblok } from "component-types-sb";
+
 const { langSwitch, language } = Astro.props;
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/navbar-config", {
+const { data }: { data: ConfigStoryblok } = await storyblokApi.get("cdn/stories/navbar-config", {
   version: isPreview() ? "draft" : "published",
   resolve_links: "url",
   language,
 });
-const headerMenu = data?.story?.content?.items;
+const headerMenu: MenuLinkStoryblok[] = data?.story?.content?.items;
 ---
 
 <header class="min-h-40 flex gap-4 items-center justify-between">
-  <NavigationMenu headerMenu={headerMenu}, languages={languages}, langSwitch={langSwitch} client:load />
+  <NavigationMenu menuLinks={headerMenu}, languages={languages}, langSwitch={langSwitch} client:load />
 </header>

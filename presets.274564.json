@@ -1,0 +1,203 @@
+{
+  "presets": [
+    {
+      "id": 2064147,
+      "name": "default",
+      "preset": {
+        "_uid": "4f568264-8e3d-4c4d-9ec3-ec582fcfb333",
+        "link": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "name": "",
+        "image": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "source": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset",
+          "meta_data": {}
+        },
+        "component": "relative",
+        "link_title": "Mehr über mich...",
+        "link_title__i18n__en": "More about me..."
+      },
+      "component_id": 5332929,
+      "space_id": 274564,
+      "created_at": "2024-02-20T10:50:22.313Z",
+      "updated_at": "2024-02-20T10:50:22.313Z",
+      "image": "",
+      "color": "",
+      "icon": "",
+      "description": ""
+    },
+    {
+      "id": 2070472,
+      "name": "default",
+      "preset": {
+        "_uid": "3e8047e8-87ad-4301-8d4d-d78943ebb9a9",
+        "name": "",
+        "image": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": null,
+          "copyright": null,
+          "fieldtype": "asset",
+          "meta_data": {},
+          "is_external_url": false
+        },
+        "price": "",
+        "gender": "",
+        "gallery": [],
+        "parents": [],
+        "children": [],
+        "birthdate": "",
+        "component": "profile",
+        "link_title": "Mehr über mich...",
+        "description": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "price_title": "Preis (€)",
+        "gender_title": "Geschlecht",
+        "gallery_title": "Galerie",
+        "parents_title": "Eltern",
+        "children_title": "Kinder",
+        "birthdate_title": "Geburtsdatum",
+        "price__i18n__en": "",
+        "gender__i18n__en": "",
+        "description_title": "Beschreibung",
+        "link_title__i18n__en": "More about me...",
+        "link_title__i18n__ru": "Больше обо мне...",
+        "description__i18n__en": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "price_title__i18n__en": "Price (€)",
+        "price_title__i18n__ru": "Цена (€)",
+        "gender_title__i18n__en": "Gender",
+        "gender_title__i18n__ru": "Пол",
+        "gallery_title__i18n__en": "Gallery",
+        "gallery_title__i18n__ru": "Галерея",
+        "parents_title__i18n__en": "Parents",
+        "parents_title__i18n__ru": "Родители",
+        "children_title__i18n__en": "Children",
+        "children_title__i18n__ru": "Дети",
+        "birthdate_title__i18n__en": "Birthdate",
+        "birthdate_title__i18n__ru": "Дата рождения",
+        "description_title__i18n__en": "Description",
+        "description_title__i18n__ru": "Описание"
+      },
+      "component_id": 5314339,
+      "space_id": 274564,
+      "created_at": "2024-02-26T15:47:44.823Z",
+      "updated_at": "2024-02-26T15:47:44.823Z",
+      "image": "",
+      "color": "",
+      "icon": "",
+      "description": ""
+    },
+    {
+      "id": 2070283,
+      "name": "default",
+      "preset": {
+        "_uid": "e3bc547f-8ec7-40f0-a7b3-089c8c07136b",
+        "title": "",
+        "content": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "component": "information-post",
+        "link_title": "weiterlesen...",
+        "title__i18n__en": "",
+        "title__i18n__ru": "",
+        "content__i18n__en": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "content__i18n__ru": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "link_title__i18n__en": "read more...",
+        "link_title__i18n__ru": "читать дальше..."
+      },
+      "component_id": 5325229,
+      "space_id": 274564,
+      "created_at": "2024-02-26T13:09:11.858Z",
+      "updated_at": "2024-02-26T13:09:11.858Z",
+      "image": "",
+      "color": "",
+      "icon": "",
+      "description": ""
+    },
+    {
+      "id": 2064148,
+      "name": "default",
+      "preset": {
+        "_uid": "d576968c-acaf-4d0f-a429-3e7cae891000",
+        "link": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "name": "",
+        "image": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "source": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset",
+          "meta_data": {}
+        },
+        "component": "child",
+        "link_title": "Mehr über mich...",
+        "link_title__i18n__en": "More about me..."
+      },
+      "component_id": 5366937,
+      "space_id": 274564,
+      "created_at": "2024-02-20T10:51:34.890Z",
+      "updated_at": "2024-02-20T10:51:34.890Z",
+      "image": "",
+      "color": "",
+      "icon": "",
+      "description": ""
+    }
+  ]
+}

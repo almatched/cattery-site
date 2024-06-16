@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "pull-sb-components": "storyblok pull-components --space #274564",
-    "generate-sb-components": "storyblok generate-typescript-typedefs --sourceFilePaths ./components.#274564.json --destinationFilePath ./component-types-sb.d.ts"
+    "pull-sb-components": "storyblok pull-components --space 274564",
+    "generate-sb-types": "storyblok generate-typescript-typedefs --sourceFilePaths ./components.274564.json --destinationFilePath ./component-types-sb.d.ts"
   },
   "dependencies": {
     "@astrojs/react": "^3.1.0",

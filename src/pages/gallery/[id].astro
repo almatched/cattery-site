@@ -1,13 +1,14 @@
 ---
 import { getImage } from "@/db/queries";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { LangSwitch } from "@/lib/customTypes";
 import { getTransLink, languages } from "@/utils/langs";
 
 const { id } = Astro.params;
 
 const image = await getImage(id);
 
-const langSwitch = {};
+const langSwitch: LangSwitch = {};
 
 languages.forEach((language) => {
   langSwitch[language] = getTransLink(language, Astro.url.pathname);

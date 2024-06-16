@@ -4,12 +4,13 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu.tsx";
+import type { MenuLinkStoryblok } from "component-types-sb";
 
-export function NavigationList({ data }) {
+export function NavigationList({ menuLinks }: { menuLinks: MenuLinkStoryblok[] }) {
   return (
     <NavigationMenu className="hidden lg:block">
       <NavigationMenuList className="text-lg flex items-center gap-5">
-        {data?.map((menu, key) => (
+        {menuLinks?.map((menu, key) => (
           <NavigationMenuItem key={key}>
             <NavigationMenuLink asChild>
               <a

@@ -4,8 +4,8 @@ import ImagePreset from "./ImagePreset.astro";
 
 const images = await getImages();
 
-let lang = "de";
-const locale = Astro.url.pathname.split("/")[1]
+let lang: string = "de";
+const locale: string = Astro.url.pathname.split("/")[1]
 
 if (locale === "en") {
   lang = "en";
@@ -13,7 +13,7 @@ if (locale === "en") {
   lang = "ru"
 }
 
-const pathNameWihoutId = lang === "de" ? "/gallery/" : ("/" + lang + "/gallery/")
+const pathNameWihoutId: string = lang === "de" ? "/gallery/" : ("/" + lang + "/gallery/")
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">

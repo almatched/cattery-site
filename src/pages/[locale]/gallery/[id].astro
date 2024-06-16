@@ -2,14 +2,15 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTransLink, languages } from "@/utils/langs";
 import { getImage } from "@/db/queries";
+import type { LangSwitch } from "@/lib/customTypes";
 
 const { locale, id } = Astro.params;
 
 const image = await getImage(id);
 
-const pathnameWithoutLocaleAsArray = Astro.url.pathname.split("/").slice(2);
-const pathnameWithSlash = "/" + pathnameWithoutLocaleAsArray.join("/");
-const langSwitch = {};
+const pathnameWithoutLocaleAsArray: string[] = Astro.url.pathname.split("/").slice(2);
+const pathnameWithSlash: string = "/" + pathnameWithoutLocaleAsArray.join("/");
+const langSwitch: LangSwitch = {};
 
 languages.forEach((language) => {
   langSwitch[language] = getTransLink(language, pathnameWithSlash);

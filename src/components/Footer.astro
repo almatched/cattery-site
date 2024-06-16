@@ -1,15 +1,16 @@
 ---
 import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ConfigStoryblok, MenuLinkStoryblok } from "component-types-sb";
 
 const { language } = Astro.props;
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/footer-config", {
+const { data }: { data: ConfigStoryblok } = await storyblokApi.get("cdn/stories/footer-config", {
   version: "draft",
   resolve_links: "url",
   language,
 });
-const socialLinks = data?.story?.content?.items;
+const socialLinks: MenuLinkStoryblok[] = data?.story?.content?.items;
 ---
 
 <footer class="mt-auto bg-muted py-8 px-6 flex flex-col items-center">
