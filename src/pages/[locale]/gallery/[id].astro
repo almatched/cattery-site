@@ -1,17 +1,11 @@
 ---
-import { db } from "@/db/index";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTransLink, languages } from "@/utils/langs";
+import { getImage } from "@/db/queries";
 
 const { locale, id } = Astro.params;
 
-const idAsNumber = Number(id);
-
-if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
-
-const image = await db.query.images.findFirst({
-  where: (model, { eq }) => eq(model.id, idAsNumber),
-});
+const image = await getImage(id);
 
 const pathnameWithoutLocaleAsArray = Astro.url.pathname.split("/").slice(2);
 const pathnameWithSlash = "/" + pathnameWithoutLocaleAsArray.join("/");

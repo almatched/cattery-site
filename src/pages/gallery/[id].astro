@@ -1,17 +1,11 @@
 ---
-import { db } from "@/db/index";
+import { getImage } from "@/db/queries";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTransLink, languages } from "@/utils/langs";
 
 const { id } = Astro.params;
 
-const idAsNumber = Number(id);
-
-if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
-
-const image = await db.query.images.findFirst({
-  where: (model, { eq }) => eq(model.id, idAsNumber),
-});
+const image = await getImage(id);
 
 const langSwitch = {};
 
