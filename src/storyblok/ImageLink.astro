@@ -1,6 +1,12 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import { Image } from "astro:assets";
+import type { ImageLinkStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: ImageLinkStoryblok;
+}
 
 const { blok } = Astro.props;
 ---

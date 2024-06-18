@@ -3,6 +3,12 @@ import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import ImagePreset from "@/components/ImagePreset.astro";
 import Gallery from "@/components/Gallery.astro";
+import type { ProfileStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: ProfileStoryblok;
+}
 
 const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);

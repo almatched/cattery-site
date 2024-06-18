@@ -1,12 +1,18 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ValuesListStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: ValuesListStoryblok;
+}
 
 const { language, blok } = Astro.props;
 ---
 
 <section {...storyblokEditable(blok)}>
-  <h3>{blok.title}</h2>
+  <h3>{blok.title}</h3>
   <ul class="list-disc ml-5">
     {
       blok.values?.map((blok) => (

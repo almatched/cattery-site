@@ -1,5 +1,11 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import type { InformationPostStoryblok } from "component-types-sb";
+
+interface Props {
+    language: string;
+    blok: InformationPostStoryblok;
+}
 
 const { blok } = Astro.props;
 const renderedRichText = renderRichText(blok.content);

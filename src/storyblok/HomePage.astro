@@ -1,7 +1,13 @@
 ---
-import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { Image } from "astro:assets";
+import type { HomePageStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: HomePageStoryblok;
+}
 
 const { language, blok } = Astro.props;
 ---

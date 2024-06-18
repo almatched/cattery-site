@@ -2,11 +2,17 @@
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
+import type { AllInformationPostsStoryblok, InformationPostStoryblok, PageStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: AllInformationPostsStoryblok;
+}
 
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
-const { data: startPageData } = await storyblokApi.get(
+const { data: informationPageData }: { data: PageStoryblok } = await storyblokApi.get(
   "cdn/stories/information",
   {
     version: isPreview() ? "draft" : "published",
@@ -21,8 +27,10 @@ const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   language,
 });
 
-const title = startPageData.story.content.title;
-const noContentFallback = startPageData.story.content.content_absent;
+const informationPage: PageStoryblok = informationPageData.story.content;
+
+const title = informationPage.title;
+const noContentFallback = informationPage.content_absent;
 const articles = itemsData.stories;
 ---
 
@@ -34,22 +42,23 @@ const articles = itemsData.stories;
     ) : (
       <ul>
         {articles?.reverse().map((article) => {
-          article.content.slug = article.slug;
+          const informationPost: InformationPostStoryblok = article.content;
+          informationPost.slug = article.slug;
           return (
             <li class="mb-10 border border-accent rounded-md px-5 sm:px-10 py-3 sm:py-5 relative hover:opacity-50">
               <h2>
                 <a
                   href={getTransLink(
                     language,
-                    `/information/${article.content.slug}`
+                    `/information/${informationPost.slug}`
                   )}
                 >
                   <span class="absolute inset-0 z-10" aria-hidden="true" />
-                  {article.content.title}
+                  {informationPost.title}
                 </a>
               </h2>
               <p class="line-clamp-4 sm:line-clamp-3">
-                {article.content.meta_description}
+                {informationPost.meta_description}
               </p>
             </li>
           );

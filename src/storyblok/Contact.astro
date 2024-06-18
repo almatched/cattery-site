@@ -1,6 +1,12 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ContactPageStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: ContactPageStoryblok;
+}
 
 const { language, blok } = Astro.props;
 ---

@@ -3,12 +3,18 @@ import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
 import ImagePreset from "../components/ImagePreset.astro";
+import type { AllProfilesStoryblok, PageStoryblok, ProfileStoryblok } from "component-types-sb";
+
+interface Props {
+  language: string;
+  blok: AllProfilesStoryblok;
+}
 
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
 
-const { data: startPageData } = await storyblokApi.get("cdn/stories/profiles", {
+const { data: profilesPageData } = await storyblokApi.get("cdn/stories/profiles", {
   version: isPreview() ? "draft" : "published",
   language,
 });
@@ -20,8 +26,10 @@ const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   language,
 });
 
-const title = startPageData.story.content.title;
-const noContentFallback = startPageData.story.content.content_absent;
+const profilesPage: PageStoryblok = profilesPageData.story.content;
+
+const title = profilesPage.title;
+const noContentFallback = profilesPage.content_absent;
 const articles = itemsData.stories;
 ---
 
@@ -33,13 +41,14 @@ const articles = itemsData.stories;
     ) : (
       <ul class="gap-5 grid grid-cols-1 min-[450px]:grid-cols-2 text-sm min-[450px]:text-base">
         {articles?.reverse().map((article) => {
-          article.content.slug = article.slug;
+          const profile: ProfileStoryblok = articles.content;
+          profile.slug = article.slug;
           return (
             <li class="relative hover:opacity-50 border rounded-md">
               <div class="aspect-[5/7] w-full rounded-t-md overflow-hidden mb-2">
                 <ImagePreset
-                  src={article.content?.image?.filename}
-                  alt={article.content?.image?.alt}
+                  src={profile?.image?.filename}
+                  alt={profile?.image?.alt}
                 />
               </div>
               <div class="mx-5 mb-2 min-[450px]:mb-5">
@@ -47,29 +56,29 @@ const articles = itemsData.stories;
                   <a
                     href={getTransLink(
                       language,
-                      `/profiles/${article.content.slug}`
+                      `/profiles/${profile.slug}`
                     )}
                   >
                     <span class="absolute inset-0 z-10" aria-hidden="true" />
-                    {article.content.title}
+                    {profile.title}
                   </a>
                 </h2>
-                {!!article.content.gender?.trim().length && (
+                {!!profile.gender?.trim().length && (
                   <div class="mb-2">
-                    <p class="font-bold">{article.content.gender_title}</p>
-                    <p>{article.content.gender}</p>
+                    <p class="font-bold">{profile.gender_title}</p>
+                    <p>{profile.gender}</p>
                   </div>
                 )}
-                {!!article.content.birthdate?.trim().length && (
+                {!!profile.birthdate?.trim().length && (
                   <div class="mb-2">
-                    <p class="font-bold">{article.content.birthdate_title}</p>
-                    <p>{article.content.birthdate.slice(0, 10)}</p>
+                    <p class="font-bold">{profile.birthdate_title}</p>
+                    <p>{profile.birthdate.slice(0, 10)}</p>
                   </div>
                 )}
-                {!!article.content.price?.trim().length && (
+                {!!profile.price?.trim().length && (
                   <div class="mb-2">
-                    <p class="font-bold">{article.content.price_title}</p>
-                    <p>{article.content.price}</p>
+                    <p class="font-bold">{profile.price_title}</p>
+                    <p>{profile.price}</p>
                   </div>
                 )}
               </div>

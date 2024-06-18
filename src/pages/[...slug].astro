@@ -5,17 +5,25 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import parseUrl from "../utils/parseUrl.ts";
 import isPreview from "../utils/isPreview.ts";
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
 
 // use this when ssg, with ssr this will be skipped
-// import generateStaticPaths from "../utils/generateStaticPaths";
-// export async function getStaticPaths() {
-//   return await generateStaticPaths();
-// }
+import generateStaticPaths from "../utils/generateStaticPaths";
+export const getStaticPaths = (async () => {
+  return await generateStaticPaths();
+}) satisfies GetStaticPaths;
 
-const params = Astro.params;
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const params = Astro.params as Params;
 // this was used when building static pages with Astro instead of vercel
 // let props = isPreview() ? parseUrl(params?.slug) : Astro.props
-let props = parseUrl(params?.slug);
+let props: Props = parseUrl(params?.slug);
 const { slug, language, langSwitch } = props;
 
 const storyblokApi = useStoryblokApi();
