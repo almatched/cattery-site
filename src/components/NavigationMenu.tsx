@@ -6,6 +6,8 @@ import { Button } from "./ui/button.tsx";
 import { AlignJustify } from "lucide-react";
 import type { MenuLinkStoryblok } from "component-types-sb";
 import type { LangSwitch } from "@/lib/customTypes.ts";
+import { LoadingSVG } from "@/components/svg/loading-svg.tsx";
+import { useEffect, useState } from "react";
 
 export function NavigationMenu({
   menuLinks,
@@ -16,16 +18,28 @@ export function NavigationMenu({
   languages: string[];
   langSwitch: LangSwitch;
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <>
       <NavigationList menuLinks={menuLinks} />
 
       <Sheet>
         <SheetTrigger asChild className="lg:hidden">
-          <Button variant="outline" size="icon" className="border-accent">
-            <AlignJustify />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
+          {isLoading ? (
+            <Button variant="outline" size="icon" className="border-accent">
+              <LoadingSVG />
+            </Button>
+          ) : (
+            <Button variant="outline" size="icon" className="border-accent">
+              <AlignJustify />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          )}
         </SheetTrigger>
         <SheetContent>
           <nav className="mt-5 flex flex-col gap-5 text-center text-lg">
