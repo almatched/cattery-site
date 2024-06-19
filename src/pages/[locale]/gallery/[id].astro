@@ -8,7 +8,9 @@ const { locale, id } = Astro.params;
 
 const image = await getImage(id);
 
-const pathnameWithoutLocaleAsArray: string[] = Astro.url.pathname.split("/").slice(2);
+const pathnameWithoutLocaleAsArray: string[] = Astro.url.pathname
+  .split("/")
+  .slice(2);
 const pathnameWithSlash: string = "/" + pathnameWithoutLocaleAsArray.join("/");
 const langSwitch: LangSwitch = {};
 
@@ -23,7 +25,7 @@ languages.forEach((language) => {
   metaTitle={"Image"}
   metaDescription={"Image"}
 >
-  <div class="h-screen">
+  <div class="flex justify-center h-[70vh]">
     <img src={image.url} class="h-full w-full object-contain object-center" />
   </div>
 </BaseLayout>
