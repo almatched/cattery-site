@@ -18,5 +18,5 @@ const headerMenu: MenuLinkStoryblok[] = data?.story?.content?.items;
 ---
 
 <header class="min-h-40 flex gap-4 items-center justify-between">
-  <NavigationMenu menuLinks={headerMenu}, languages={languages}, langSwitch={langSwitch} client:load />
+  <NavigationMenu menuLinks={headerMenu}, languages={languages}, langSwitch={langSwitch} client:idle />
 </header>
