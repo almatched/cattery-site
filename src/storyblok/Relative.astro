@@ -13,12 +13,18 @@ const { blok } = Astro.props;
 
 <section {...storyblokEditable(blok)} class="flex flex-wrap gap-2 mb-10">
   <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
-    <ImagePreset src={blok.image?.filename} alt={blok.image?.alt} />
+    <img
+      src={blok.image?.filename}
+      alt={blok.image?.alt}
+      class="h-full w-full object-cover object-center"
+    />
   </div>
   <div>
     <h3>{blok.name}</h3>
-    <a class="underline underline-offset-2" href=`/${blok.link.cached_url}`
-      >More about me...</a
-    >
+    {blok.link.url.trim().length !== 0 
+    && 
+    (<a class="underline underline-offset-2" href=`/${blok.link.cached_url}`
+    >More about me...</a>
+    )}
   </div>
 </section>

@@ -3,7 +3,11 @@ import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
 import ImagePreset from "../components/ImagePreset.astro";
-import type { AllProfilesStoryblok, PageStoryblok, ProfileStoryblok } from "component-types-sb";
+import type {
+  AllProfilesStoryblok,
+  PageStoryblok,
+  ProfileStoryblok,
+} from "component-types-sb";
 
 interface Props {
   language: string;
@@ -14,10 +18,13 @@ const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
 
-const { data: profilesPageData } = await storyblokApi.get("cdn/stories/profiles", {
-  version: isPreview() ? "draft" : "published",
-  language,
-});
+const { data: profilesPageData } = await storyblokApi.get(
+  "cdn/stories/profiles",
+  {
+    version: isPreview() ? "draft" : "published",
+    language,
+  }
+);
 
 const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   version: isPreview() ? "draft" : "published",
@@ -41,17 +48,18 @@ const articles = itemsData.stories;
     ) : (
       <ul class="gap-5 grid grid-cols-1 min-[450px]:grid-cols-2 text-sm min-[450px]:text-base">
         {articles?.reverse().map((article) => {
-          const profile: ProfileStoryblok = articles.content;
+          const profile: ProfileStoryblok = article.content;
           profile.slug = article.slug;
           return (
             <li class="relative hover:opacity-50 border rounded-md">
               <div class="aspect-[5/7] w-full rounded-t-md overflow-hidden mb-2">
-                <ImagePreset
-                  src={profile?.image?.filename}
-                  alt={profile?.image?.alt}
+                <img
+                  src={profile.image?.filename}
+                  alt={profile.image?.alt}
+                  class="h-full w-full object-cover object-center"
                 />
               </div>
-              <div class="mx-5 mb-2 min-[450px]:mb-5">
+              <div class="mb-2 min-[450px]:mb-5">
                 <h2>
                   <a
                     href={getTransLink(

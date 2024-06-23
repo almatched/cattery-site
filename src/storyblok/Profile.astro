@@ -2,7 +2,7 @@
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import ImagePreset from "@/components/ImagePreset.astro";
-import Gallery from "@/components/Gallery.astro";
+import ProfileGallery from "@/components/ProfileGallery.astro";
 import type { ProfileStoryblok } from "component-types-sb";
 
 interface Props {
@@ -17,7 +17,11 @@ const renderedRichText = renderRichText(blok.description);
 <article {...storyblokEditable(blok)}>
   <section class="flex flex-wrap gap-5 mb-5">
     <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
-      <ImagePreset src={blok.image?.filename} alt={blok.image?.alt} />
+      <img
+        src={blok.image?.filename}
+        alt={blok.image?.alt}
+        class="h-full w-full object-cover object-center"
+      />
     </div>
     <div>
       <h1>
@@ -58,8 +62,16 @@ const renderedRichText = renderRichText(blok.description);
     )
   }
   {
+    !!blok.gallery?.length && (
+      <section class="mb-5">
+        <h2>{blok.gallery_title}</h2>
+        <ProfileGallery images={blok.gallery} />
+      </section>
+    )
+  }
+  {
     !!blok.parents?.length && (
-      <section>
+      <section class="mb-5">
         <h2>{blok.parents_title}</h2>
         <ul>
           {blok.parents?.map((blok) => (
@@ -82,14 +94,6 @@ const renderedRichText = renderRichText(blok.description);
             </li>
           ))}
         </ul>
-      </section>
-    )
-  }
-  {
-    !!blok.gallery?.length && (
-      <section>
-        <h2>{blok.gallery_title}</h2>
-        <Gallery images={blok.gallery} />
       </section>
     )
   }
