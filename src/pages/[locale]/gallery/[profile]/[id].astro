@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getTransLink, languages } from "@/utils/langs";
+import type { LangSwitch } from "@/lib/customTypes";
+
+const { locale } = Astro.params;
+
+const pathnameWithoutLocaleAsArray: string[] = Astro.url.pathname
+  .split("/")
+  .slice(2);
+const pathnameWithSlash: string = "/" + pathnameWithoutLocaleAsArray.join("/");
+
+const searchParams = Astro.url.search;
+const pathnameWithSearchParams = pathnameWithSlash + searchParams;
+
+const langSwitch: LangSwitch = {};
+
+languages.forEach((language) => {
+  langSwitch[language] = getTransLink(language, pathnameWithSearchParams);
+});
+
+const imgUrl = Astro.url.searchParams.get("img_url");
+---
+
+<BaseLayout
+  langSwitch={langSwitch}
+  language={locale}
+  metaTitle={"Image"}
+  metaDescription={"Image"}
+>
+  <div class="flex justify-center h-[70vh]">
+    <img src={imgUrl} class="h-full w-full object-contain object-center" />
+  </div>
+</BaseLayout>

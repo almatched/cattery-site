@@ -2,13 +2,33 @@
 import ImagePreset from "./ImagePreset.astro";
 
 const { images } = Astro.props;
+
+let lang: string = "de";
+const locale: string = Astro.url.pathname.split("/")[1];
+
+let profileName = Astro.url.pathname.split("/")[2];
+
+if (Astro.url.pathname.split("/")[1] !== "profiles") {
+  profileName = Astro.url.pathname.split("/")[3];
+}
+
+if (locale === "en") {
+  lang = "en";
+} else if (locale === "ru") {
+  lang = "ru";
+}
+
+const pathNameWithoutId: string =
+  lang === "de" ? `/gallery/${profileName}` : `/${lang}/gallery/${profileName}`;
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
   {
-    images?.map((image) => (
+    images.map((image) => (
       <li class="aspect-square rounded-md overflow-hidden">
-        <ImagePreset src={image?.filename} alt={image?.alt} />
+        <a href={`${pathNameWithoutId}/${image.id}?img_url=${image.filename}`}>
+          <ImagePreset src={image.filename} alt={image.alt} />
+        </a>
       </li>
     ))
   }

@@ -5,25 +5,26 @@ import ImagePreset from "./ImagePreset.astro";
 const images = await getImages();
 
 let lang: string = "de";
-const locale: string = Astro.url.pathname.split("/")[1]
+const locale: string = Astro.url.pathname.split("/")[1];
 
 if (locale === "en") {
   lang = "en";
 } else if (locale === "ru") {
-  lang = "ru"
+  lang = "ru";
 }
 
-const pathNameWihoutId: string = lang === "de" ? "/gallery/" : ("/" + lang + "/gallery/")
+const pathNameWithoutId: string =
+  lang === "de" ? "/gallery/" : "/" + lang + "/gallery/";
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
   {
-    images?.map((image) => (
-      <a href={pathNameWihoutId + image.id}>
-        <li class="aspect-square rounded-md overflow-hidden hover:cursor-pointer">
+    images.map((image) => (
+      <li class="aspect-square rounded-md overflow-hidden hover:cursor-pointer">
+        <a href={pathNameWithoutId + image.id}>
           <ImagePreset src={image?.url} alt={image?.name} />
-        </li>
-      </a>
+        </a>
+      </li>
     ))
   }
 </ul>
