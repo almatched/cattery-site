@@ -67,6 +67,7 @@ export default defineConfig({
   } : {
     output: "server",
     adapter: vercel(),
+    // Individual image page that is accessed from a cat profile page -> gallery doesn't show the image with isr on
     // adapter: vercel({
     //   isr: {
     //     expiration: 60 * 60 * 12,
