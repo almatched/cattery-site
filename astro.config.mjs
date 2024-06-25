@@ -66,11 +66,12 @@ export default defineConfig({
     adapter: vercel(),
   } : {
     output: "server",
-    adapter: vercel({
-      isr: {
-        expiration: 60 * 60 * 12,
-      },
-    }),
+    adapter: vercel(),
+    // adapter: vercel({
+    //   isr: {
+    //     expiration: 60 * 60 * 12,
+    //   },
+    // }),
   }),
   ...(isDevMode && {
     vite: {
