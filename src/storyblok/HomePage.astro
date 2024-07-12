@@ -1,7 +1,7 @@
 ---
+import ImagePreset from "@/components/ImagePreset.astro";
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import { Image } from "astro:assets";
 import type { HomePageStoryblok } from "component-types-sb";
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { language, blok } = Astro.props;
+const maxWidth = "300";
 ---
 
 <article {...storyblokEditable(blok)}>
@@ -17,16 +18,17 @@ const { language, blok } = Astro.props;
     <h1 class="mb-5 sm:mb-10">{blok.title}</h1>
     <div class="grid sm:grid-cols-2 gap-8 sm:gap-4">
       <p>{blok.content}</p>
-      <div class="rounded-md overflow-hidden max-w-72 justify-self-center">
-        <Image
-          src={blok?.main_image.filename + "/m/"}
-          alt={blok?.main_image.alt ?? ""}
-          inferSize
-          class="object-cover object-center w-full h-full"
+      <div class=`rounded-md overflow-hidden max-w-[${maxWidth}px] justify-self-center h-full w-full`>
+        <ImagePreset
+          src={blok?.main_image.filename}
+          alt={blok?.main_image.alt}
+          width={maxWidth}
+          height="0"
         />
       </div>
     </div>
   </section>
+  <p>test</p>
   <div class="flex gap-5 mb-10 flex-wrap justify-center">
     {
       blok.cta_list?.map((blokItem) => (

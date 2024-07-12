@@ -1,6 +1,6 @@
 ---
 import { getImages } from "@/db/queries";
-import ImagePreset from "./ImagePreset.astro";
+import { Picture } from "astro:assets";
 
 const images = await getImages();
 
@@ -22,7 +22,14 @@ const pathNameWithoutId: string =
     images.map((image) => (
       <li class="aspect-square rounded-md overflow-hidden hover:cursor-pointer">
         <a href={pathNameWithoutId + image.id}>
-          <ImagePreset src={image?.url} alt={image?.name} />
+          <Picture
+            src={image?.url}
+            alt={image?.name ?? "image without description"}
+            width="230"
+            height="230"
+            class="object-cover object-center w-full h-full"
+            formats={["avif", "webp"]}
+          />
         </a>
       </li>
     ))

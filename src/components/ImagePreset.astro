@@ -1,14 +1,13 @@
 ---
 import { Picture } from "astro:assets";
 
-const { src, alt } = Astro.props;
+const { src, alt, width, height } = Astro.props;
 ---
 
 <Picture
-  src={src + "/m/192x192"}
+  src={src + `/m/${width}x${height}`}
   alt={alt ?? "image without description"}
-  width="192"
-  height="192"
+  inferSize
   class="object-cover object-center w-full h-full"
   formats={["avif", "webp"]}
 />

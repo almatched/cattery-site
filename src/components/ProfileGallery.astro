@@ -27,7 +27,12 @@ const pathNameWithoutId: string =
     images.map((image) => (
       <li class="aspect-square rounded-md overflow-hidden">
         <a href={`${pathNameWithoutId}/${image.id}?img_url=${image.filename}`}>
-          <ImagePreset src={image.filename} alt={image.alt} />
+          <ImagePreset
+            src={image.filename}
+            alt={image.alt}
+            width="230"
+            height="230"
+          />
         </a>
       </li>
     ))
