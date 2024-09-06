@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { language, blok } = Astro.props;
-const maxWidth = "300";
+const maxWidth = "500";
 ---
 
 <article {...storyblokEditable(blok)}>
@@ -28,7 +28,6 @@ const maxWidth = "300";
       </div>
     </div>
   </section>
-  <p>test</p>
   <div class="flex gap-5 mb-10 flex-wrap justify-center">
     {
       blok.cta_list?.map((blokItem) => (
