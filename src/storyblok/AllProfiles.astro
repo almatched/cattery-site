@@ -38,6 +38,7 @@ const profilesPage: PageStoryblok = profilesPageData.story.content;
 const title = profilesPage.title;
 const noContentFallback = profilesPage.content_absent;
 const articles = itemsData.stories;
+const maxWidth = "500";
 ---
 
 <section {...storyblokEditable(blok)}>
@@ -53,16 +54,10 @@ const articles = itemsData.stories;
           return (
             <li class="relative hover:opacity-50 border rounded-md">
               <div class="aspect-[5/7] w-full rounded-t-md overflow-hidden mb-2">
-                <img
-                  src={profile.image?.filename}
-                  alt={profile.image?.alt}
-                  class="h-full w-full object-cover object-center"
-                />
                 <Image
-                  src={profile.image?.filename + `/m/${500}x${0}`}
+                  src={profile.image?.filename + `/m/${maxWidth}x${0}`}
                   alt={profile.image?.alt ?? "image without description"}
-                  width="500"
-                  height="500"
+                  inferSize
                   class="object-cover object-center w-full h-full"
                   quality={80}
                 />

@@ -20,6 +20,7 @@ if (locale === "en") {
 
 const pathNameWithoutId: string =
   lang === "de" ? `/gallery/${profileName}` : `/${lang}/gallery/${profileName}`;
+const maxWidth = "400";
 ---
 
 <ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
@@ -28,10 +29,9 @@ const pathNameWithoutId: string =
       <li class="aspect-square rounded-md overflow-hidden">
         <a href={`${pathNameWithoutId}/${image.id}?img_url=${image.filename}`}>
           <Image
-            src={image.filename + `/m/${500}x${0}`}
+            src={image.filename + `/m/${maxWidth}x${0}`}
             alt={image.alt ?? "image without description"}
-            width="500"
-            height="750"
+            inferSize
             class="object-cover object-center w-full h-full"
             quality={80}
           />

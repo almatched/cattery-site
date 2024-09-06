@@ -9,13 +9,17 @@ interface Props {
 }
 
 const { blok } = Astro.props;
-const maxWidth = 250;
+
+const maxWidth = "300";
+// also change the width in imageWrapperClass' to have best optimization
+const imageWrapperClass =
+  "group aspect-[5/7] max-w-[300px] sm:max-w-60 rounded-md overflow-hidden relative hover:scale-110 hover:z-10 w-full h-full";
 ---
 
 <a
   {...storyblokEditable(blok)}
   href=`${blok.link.cached_url}`
-  class=`group aspect-[5/7] max-w-[${maxWidth}px] sm:max-w-60 rounded-md overflow-hidden relative hover:scale-110 hover:z-10 w-full h-full`
+  class={imageWrapperClass}
 >
   <div
     class="bg-primary text-accent-foreground text-xl font-semibold absolute w-full px-2 py-3 opacity-70 group-hover:opacity-90"
@@ -23,10 +27,9 @@ const maxWidth = 250;
     {blok.cta_text}
   </div>
   <Image
-    src={blok.image.filename + `/m/${500}x${0}`}
+    src={blok.image.filename + `/m/${maxWidth}x${0}`}
     alt={blok.image.alt ?? "image without description"}
-    width="500"
-    height="750"
+    inferSize
     class="object-cover object-center w-full h-full"
     quality={80}
   />
