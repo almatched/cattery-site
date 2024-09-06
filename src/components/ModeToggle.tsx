@@ -40,7 +40,7 @@ export function ModeToggle() {
           </Button>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="border-accent">
         <DropdownMenuItem onClick={() => changeTheme("theme-light")}>
           Light
         </DropdownMenuItem>

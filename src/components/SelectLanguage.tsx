@@ -38,11 +38,11 @@ export function SelectLanguage({
           </Button>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="border-accent">
         {languages?.map((lang: string, key: number) => (
           <DropdownMenuItem key={key} className="p-0">
             <a href={langSwitch[lang]} className="w-full px-2 py-1.5">
-              {lang}
+              {lang.toUpperCase()}
             </a>
           </DropdownMenuItem>
         ))}

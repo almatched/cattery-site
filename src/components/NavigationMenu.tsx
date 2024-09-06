@@ -1,7 +1,7 @@
 import { NavigationList } from "./NavigationList.tsx";
 import { SelectLanguage } from "./SelectLanguage.tsx";
 import { ModeToggle } from "./ModeToggle.tsx";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "./ui/button.tsx";
 import { AlignJustify } from "lucide-react";
 import type { MenuLinkStoryblok } from "component-types-sb";
@@ -41,7 +41,9 @@ export function NavigationMenu({
             </Button>
           )}
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="border-accent">
+          <SheetTitle className="sr-only">Website navigation menu</SheetTitle>
+          <SheetDescription className="sr-only">You can choose to which section of the site to go by navigating this menu.</SheetDescription>
           <nav className="mt-5 flex flex-col gap-5 text-center text-lg">
             {menuLinks?.map((menu, key) => (
               <a
