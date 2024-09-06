@@ -25,9 +25,6 @@ if (isDevMode) {
 export default defineConfig({
   image: {
     remotePatterns: [{ protocol: "https" }],
-    // service: {
-    //   entrypoint: 'astro/assets/services/noop'
-    // },
   },
   redirects: {
     '/': '/home',

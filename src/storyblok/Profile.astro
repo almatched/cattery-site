@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import ProfileGallery from "@/components/ProfileGallery.astro";
@@ -16,10 +17,13 @@ const renderedRichText = renderRichText(blok.description);
 <article {...storyblokEditable(blok)}>
   <section class="flex flex-wrap gap-5 mb-5">
     <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
-      <img
+      <Image
         src={blok.image?.filename}
-        alt={blok.image?.alt}
+        alt={blok.image?.alt ?? "image without description"}
+        width={700}
+        height={700}
         class="h-full w-full object-cover object-center"
+        quality={80}
       />
     </div>
     <div>

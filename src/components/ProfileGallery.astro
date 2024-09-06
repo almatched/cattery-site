@@ -1,5 +1,5 @@
 ---
-import ImagePreset from "./ImagePreset.astro";
+import { Image } from "astro:assets";
 
 const { images } = Astro.props;
 
@@ -27,12 +27,12 @@ const pathNameWithoutId: string =
     images.map((image) => (
       <li class="aspect-square rounded-md overflow-hidden">
         <a href={`${pathNameWithoutId}/${image.id}?img_url=${image.filename}`}>
-          <ImagePreset
-            src={image.filename}
-            alt={image.alt}
+          <Image
+            src={image.filename + `/m/${500}x${0}`}
+            alt={image.alt ?? "image without description"}
             width="500"
-            height="500"
-            quality={80}
+            height="750"
+            class="object-cover object-center w-full h-full"
           />
         </a>
       </li>

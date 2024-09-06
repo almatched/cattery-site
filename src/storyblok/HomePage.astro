@@ -1,5 +1,5 @@
 ---
-import ImagePreset from "@/components/ImagePreset.astro";
+import { Image } from "astro:assets";
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import type { HomePageStoryblok } from "component-types-sb";
@@ -18,12 +18,15 @@ const maxWidth = "500";
     <h1 class="mb-5 sm:mb-10">{blok.title}</h1>
     <div class="grid sm:grid-cols-2 gap-8 sm:gap-4">
       <p>{blok.content}</p>
-      <div class=`rounded-md overflow-hidden max-w-[${maxWidth}px] justify-self-center h-full w-full`>
-        <ImagePreset
-          src={blok?.main_image.filename}
-          alt={blok?.main_image.alt}
-          width={maxWidth}
-          height="0"
+      <div
+        class=`rounded-md overflow-hidden max-w-[${maxWidth}px] justify-self-center h-full w-full`
+      >
+        <Image
+          src={blok?.main_image.filename + `/m/${500}x${0}`}
+          alt={blok?.main_image.alt ?? "image without description"}
+          width="500"
+          height="750"
+          class="object-cover object-center w-full h-full"
         />
       </div>
     </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { storyblokEditable } from "@storyblok/astro";
 import type { RelativeStoryblok } from "component-types-sb";
 
@@ -12,11 +13,14 @@ const { blok } = Astro.props;
 
 <section {...storyblokEditable(blok)} class="flex flex-wrap gap-2 mb-10">
   <div class="aspect-[5/7] max-w-80 w-full rounded-md overflow-hidden">
-    <img
-      src={blok.image?.filename}
-      alt={blok.image?.alt}
-      class="h-full w-full object-cover object-center"
-    />
+    <Image
+        src={blok.image?.filename}
+        alt={blok.image?.alt ?? "image without description"}
+        width={700}
+        height={700}
+        class="h-full w-full object-cover object-center"
+        quality={80}
+      />
   </div>
   <div>
     <h3>{blok.name}</h3>

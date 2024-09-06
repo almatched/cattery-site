@@ -2,6 +2,7 @@
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
+import { Image } from "astro:assets";
 import type {
   AllProfilesStoryblok,
   PageStoryblok,
@@ -57,15 +58,17 @@ const articles = itemsData.stories;
                   alt={profile.image?.alt}
                   class="h-full w-full object-cover object-center"
                 />
+                <Image
+                  src={profile.image?.filename + `/m/${500}x${0}`}
+                  alt={profile.image?.alt ?? "image without description"}
+                  width="500"
+                  height="500"
+                  class="object-cover object-center w-full h-full"
+                />
               </div>
               <div class="mb-2 min-[450px]:mb-5">
                 <h2>
-                  <a
-                    href={getTransLink(
-                      language,
-                      `/profiles/${profile.slug}`
-                    )}
-                  >
+                  <a href={getTransLink(language, `/profiles/${profile.slug}`)}>
                     <span class="absolute inset-0 z-10" aria-hidden="true" />
                     {profile.title}
                   </a>

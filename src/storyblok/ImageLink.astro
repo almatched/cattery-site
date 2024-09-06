@@ -1,5 +1,5 @@
 ---
-import ImagePreset from "@/components/ImagePreset.astro";
+import { Image } from "astro:assets";
 import { storyblokEditable } from "@storyblok/astro";
 import type { ImageLinkStoryblok } from "component-types-sb";
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { blok } = Astro.props;
-const maxWidth = "250";
+const maxWidth = 250;
 ---
 
 <a
@@ -22,10 +22,11 @@ const maxWidth = "250";
   >
     {blok.cta_text}
   </div>
-  <ImagePreset
-    src={blok.image.filename}
-    alt={blok.image.alt}
-    width={maxWidth}
-    height="0"
+  <Image
+    src={blok.image.filename + `/m/${500}x${0}`}
+    alt={blok.image.alt ?? "image without description"}
+    width="500"
+    height="750"
+    class="object-cover object-center w-full h-full"
   />
 </a>
