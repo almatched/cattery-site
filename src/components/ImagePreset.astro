@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+
+const { src } = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={"image without description"}
+  inferSize
+  class="h-full w-full object-contain object-center"
+  quality={80}
+/>

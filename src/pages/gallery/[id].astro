@@ -1,4 +1,5 @@
 ---
+import ImagePreset from "@/components/ImagePreset.astro";
 import { getImage } from "@/db/queries";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { LangSwitch } from "@/lib/customTypes";
@@ -22,6 +23,6 @@ languages.forEach((language) => {
   metaDescription={"Image"}
 >
   <div class="flex justify-center h-[70vh]">
-    <img src={image.url} class="h-full w-full object-contain object-center" />
+    <ImagePreset src={image.url} />
   </div>
 </BaseLayout>

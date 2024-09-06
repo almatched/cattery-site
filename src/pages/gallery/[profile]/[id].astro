@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTransLink, languages } from "@/utils/langs";
 import type { LangSwitch } from "@/lib/customTypes";
+import ImagePreset from "@/components/ImagePreset.astro";
 
 const langSwitch: LangSwitch = {};
 
@@ -23,6 +24,6 @@ const imgUrl = Astro.url.searchParams.get("img_url");
   metaDescription={"Image"}
 >
   <div class="flex justify-center h-[70vh]">
-    <img src={imgUrl} class="h-full w-full object-contain object-center" />
+    <ImagePreset src={imgUrl} />
   </div>
 </BaseLayout>
