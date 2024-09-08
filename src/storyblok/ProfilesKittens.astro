@@ -21,7 +21,7 @@ console.log(blok);
 const storyblokApi = useStoryblokApi();
 
 const { data: profilesPageData } = await storyblokApi.get(
-  "cdn/stories/profiles",
+  "cdn/stories/profiles/kittens",
   {
     version: isPreview() ? "draft" : "published",
     language,
@@ -30,7 +30,7 @@ const { data: profilesPageData } = await storyblokApi.get(
 
 const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   version: isPreview() ? "draft" : "published",
-  starts_with: "profiles/",
+  starts_with: "profiles/kittens",
   is_startpage: false,
   language,
 });
@@ -66,7 +66,7 @@ const maxWidth = "500";
               </div>
               <div class="mb-2 min-[450px]:mb-5 mx-2">
                 <h2>
-                  <a href={getTransLink(language, `/profiles/${profile.slug}`)}>
+                  <a href={getTransLink(language, `/profiles/kittens/${profile.slug}`)}>
                     <span class="absolute inset-0 z-10" aria-hidden="true" />
                     {profile.title}
                   </a>
@@ -83,12 +83,12 @@ const maxWidth = "500";
                     <p>{profile.birthdate.slice(0, 10)}</p>
                   </div>
                 )}
-                {/* {!!profile.price?.trim().length && (
+                {!!profile.price?.trim().length && (
                   <div class="mb-2">
                     <p class="font-bold">{profile.price_title}</p>
                     <p>{profile.price}</p>
                   </div>
-                )} */}
+                )}
               </div>
             </li>
           );

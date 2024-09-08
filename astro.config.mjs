@@ -50,7 +50,10 @@ export default defineConfig({
       'all-information-posts': 'storyblok/AllInformationPosts',
       'information-post': 'storyblok/InformationPost',
       relative: 'storyblok/Relative',
-      'image-link': 'storyblok/ImageLink'
+      'image-link': 'storyblok/ImageLink',
+      'profile_parent': 'storyblok/ProfileParent',
+      'profiles_parents': 'storyblok/ProfilesParents',
+      'profiles_kittens': 'storyblok/ProfilesKittens'
     },
     apiOptions: {
       region: 'eu'
