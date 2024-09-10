@@ -13,9 +13,9 @@ interface Props {
 const { language, blok } = Astro.props;
 const renderedRichText = renderRichText(blok.description);
 
-const maxWidth = 300;
+const maxWidth = 600;
 // also change the width in imageWrapperClass' to have best optimization
-const imageWrapperClass = "aspect-[5/7] max-w-[300px] w-full rounded-md overflow-hidden";
+const imageWrapperClass = "aspect-square max-w-[400px] w-full rounded-md overflow-hidden";
 ---
 
 <article {...storyblokEditable(blok)}>

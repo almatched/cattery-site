@@ -1,7 +1,19 @@
 import { NavigationList } from "./NavigationList.tsx";
 import { SelectLanguage } from "./SelectLanguage.tsx";
 import { ModeToggle } from "./ModeToggle.tsx";
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button.tsx";
 import { AlignJustify } from "lucide-react";
 import type { MenuLinkStoryblok } from "component-types-sb";
@@ -43,21 +55,48 @@ export function NavigationMenu({
         </SheetTrigger>
         <SheetContent className="border-accent">
           <SheetTitle className="sr-only">Website navigation menu</SheetTitle>
-          <SheetDescription className="sr-only">You can choose to which section of the site to go by navigating this menu.</SheetDescription>
+          <SheetDescription className="sr-only">
+            You can choose to which section of the site to go by navigating this
+            menu.
+          </SheetDescription>
           <nav className="mt-5 flex flex-col gap-5 text-center text-lg">
-            {menuLinks?.map((menu, key) => (
-              <a
-                key={key}
-                className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold"
-                href={
-                  menu.link.cached_url.startsWith("/")
-                    ? menu.link.cached_url
-                    : `/${menu.link.cached_url}`
-                }
-              >
-                {menu.link_name}
-              </a>
-            ))}
+            {menuLinks?.map((menu) => {
+              return menu.link ? (
+                <a
+                  key={menu._uid}
+                  className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold"
+                  href={
+                    menu.link.cached_url.startsWith("/")
+                      ? menu.link.cached_url
+                      : `/${menu.link.cached_url}`
+                  }
+                >
+                  {menu.link_name}
+                </a>
+              ) : (
+                <DropdownMenu key={menu._uid}>
+                  <DropdownMenuTrigger className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold">
+                    {menu.title}
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="border-accent">
+                    {menu.links?.map((submenu) => (
+                      <DropdownMenuItem key={submenu.link.id} className="p-0">
+                        <a
+                          className="w-full px-2 py-1.5"
+                          href={
+                            submenu.link.cached_url.startsWith("/")
+                              ? submenu.link.cached_url
+                              : `/${submenu.link.cached_url}`
+                          }
+                        >
+                          {submenu.link_name}
+                        </a>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              );
+            })}
           </nav>
         </SheetContent>
       </Sheet>

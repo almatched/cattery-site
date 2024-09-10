@@ -39,7 +39,6 @@ export default defineConfig({
       page: 'storyblok/Page',
       grid: 'storyblok/Grid',
       config: 'storyblok/Config',
-      profile: 'storyblok/Profile',
       'all-profiles': 'storyblok/AllProfiles',
       'contact-page': 'storyblok/Contact',
       'gallery-page': 'storyblok/GalleryPage',
@@ -51,6 +50,7 @@ export default defineConfig({
       'information-post': 'storyblok/InformationPost',
       relative: 'storyblok/Relative',
       'image-link': 'storyblok/ImageLink',
+      profile: 'storyblok/Profile',
       'profile_parent': 'storyblok/ProfileParent',
       'profiles_parents': 'storyblok/ProfilesParents',
       'profiles_kittens': 'storyblok/ProfilesKittens'

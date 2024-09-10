@@ -13,7 +13,7 @@ const { blok } = Astro.props;
 const maxWidth = "400";
 // also change the width in imageWrapperClass' to have best optimization
 const imageWrapperClass =
-  "aspect-[5/7] max-w-[300px] h-full w-full rounded-md overflow-hidden";
+  "aspect-square max-w-[300px] h-full w-full rounded-md overflow-hidden";
 ---
 
 <section {...storyblokEditable(blok)} class="flex flex-wrap gap-6 mb-10">
@@ -30,7 +30,7 @@ const imageWrapperClass =
     <h3>{blok.name}</h3>
     {blok.link.url.trim().length !== 0 
     && 
-    (<a class="underline underline-offset-2" href=`/${blok.link.cached_url}`
+    (<a class="underline underline-offset-2" href={`/${blok.link.cached_url}`}
     >More about me...</a>
     )}
   </div>
