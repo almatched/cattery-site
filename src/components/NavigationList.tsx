@@ -41,10 +41,11 @@ export function NavigationList({
               <DropdownMenuTrigger className="text-3xl font-semibold hover:opacity-75 text-primary">
                 {menu.title}
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="border-accent">
+              <DropdownMenuContent align="end" className="border-accent p-2 flex flex-col gap-2">
                 {menu.links?.map((submenu) => (
-                  <DropdownMenuItem key={submenu.link.id} className="p-0">
-                    <a className="w-full px-2 py-1.5"
+                  <DropdownMenuItem key={submenu.link.id} className="p-0 text-lg">
+                    <a
+                      className="w-full px-2 py-1.5"
                       href={
                         submenu.link.cached_url.startsWith("/")
                           ? submenu.link.cached_url
