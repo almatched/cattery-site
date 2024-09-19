@@ -9,11 +9,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Button } from "./ui/button.tsx";
 import { AlignJustify } from "lucide-react";
 import type { MenuLinkStoryblok } from "component-types-sb";
@@ -74,27 +73,25 @@ export function NavigationMenu({
                   {menu.link_name}
                 </a>
               ) : (
-                <DropdownMenu key={menu._uid}>
-                  <DropdownMenuTrigger className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold">
+                <Collapsible key={menu._uid} className="space-y-5">
+                  <CollapsibleTrigger className="bg-primary text-primary-foreground py-2 w-full rounded-md hover:opacity-75 font-semibold">
                     {menu.title}
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border-accent">
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="flex flex-col gap-4 items-center">
                     {menu.links?.map((submenu) => (
-                      <DropdownMenuItem key={submenu.link.id} className="p-0">
-                        <a
-                          className="w-full px-2 py-1.5"
-                          href={
-                            submenu.link.cached_url.startsWith("/")
-                              ? submenu.link.cached_url
-                              : `/${submenu.link.cached_url}`
-                          }
-                        >
-                          {submenu.link_name}
-                        </a>
-                      </DropdownMenuItem>
+                      <a
+                        className="bg-primary text-primary-foreground py-1 w-3/4 rounded-md hover:opacity-75 font-semibold"
+                        href={
+                          submenu.link.cached_url.startsWith("/")
+                            ? submenu.link.cached_url
+                            : `/${submenu.link.cached_url}`
+                        }
+                      >
+                        {submenu.link_name}
+                      </a>
                     ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                  </CollapsibleContent>
+                </Collapsible>
               );
             })}
           </nav>
