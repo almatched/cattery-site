@@ -80,6 +80,7 @@ export function NavigationMenu({
                   <CollapsibleContent className="flex flex-col gap-4 items-center">
                     {menu.links?.map((submenu) => (
                       <a
+                        key={submenu.link.id}
                         className="bg-primary text-primary-foreground py-1 w-3/4 rounded-md hover:opacity-75 font-semibold"
                         href={
                           submenu.link.cached_url.startsWith("/")

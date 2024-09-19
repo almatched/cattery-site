@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -17,6 +19,17 @@ export function NavigationList({
 }: {
   menuLinks: MenuLinkStoryblok[];
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  let dropDownTrigger = "text-3xl font-semibold hover:opacity-75 text-primary";
+  if (isLoading) {
+    dropDownTrigger += " opacity-20 pointer-events-none";
+  }
+
   return (
     <NavigationMenu className="hidden lg:block">
       <NavigationMenuList className="text-lg flex items-center gap-5">
@@ -38,12 +51,18 @@ export function NavigationList({
             </NavigationMenuItem>
           ) : (
             <DropdownMenu key={menu._uid}>
-              <DropdownMenuTrigger className="text-3xl font-semibold hover:opacity-75 text-primary">
+              <DropdownMenuTrigger className={dropDownTrigger}>
                 {menu.title}
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="border-accent p-2 flex flex-col gap-2">
+              <DropdownMenuContent
+                align="end"
+                className="border-accent p-2 flex flex-col gap-2"
+              >
                 {menu.links?.map((submenu) => (
-                  <DropdownMenuItem key={submenu.link.id} className="p-0 text-lg">
+                  <DropdownMenuItem
+                    key={submenu.link.id}
+                    className="p-0 text-lg"
+                  >
                     <a
                       className="w-full px-2 py-1.5"
                       href={
