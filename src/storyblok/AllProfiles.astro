@@ -55,7 +55,7 @@ const maxWidth = "500";
           profile.slug = article.slug;
           return (
             <li class="relative hover:opacity-50 border border-accent rounded-md">
-              <div class="aspect-[5/7] w-full rounded-t-md overflow-hidden mb-2">
+              <div class="aspect-square w-full rounded-t-md overflow-hidden mb-2">
                 <Image
                   src={profile.image?.filename + `/m/${maxWidth}x${0}`}
                   alt={profile.image?.alt ?? "image without description"}
