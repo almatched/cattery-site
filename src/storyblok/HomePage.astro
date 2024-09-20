@@ -41,8 +41,8 @@ const imageWrapperClass =
     }
   </div>
   {
-    blok.block?.map((blokItem) => (
-      <StoryblokComponent language={language} blok={blokItem} />
+    blok.values?.map((valuesSection) => (
+      <StoryblokComponent language={language} blok={valuesSection} />
     ))
   }
 </article>

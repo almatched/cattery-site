@@ -38,7 +38,7 @@ export default defineConfig({
     bridge: storyblokEnv.STORYBLOK_IS_PREVIEW === "yes",
     components: {
       'page': 'storyblok/Page',
-      'grid': 'storyblok/Grid',
+      'values_section': 'storyblok/ValuesSection',
       'config': 'storyblok/Config',
       'profiles': 'storyblok/Profiles',
       'contact_page': 'storyblok/Contact',

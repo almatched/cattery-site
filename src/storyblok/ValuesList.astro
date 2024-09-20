@@ -1,7 +1,10 @@
 ---
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import type { ValuesListStoryblok } from "component-types-sb";
+
+import { HeartPulse, Cat, Users } from "lucide-react"
 
 interface Props {
   language: string;
@@ -9,17 +12,31 @@ interface Props {
 }
 
 const { language, blok } = Astro.props;
+
+let Icon = Cat;
+
+if (blok.icon === "health") {
+  Icon = HeartPulse
+} else if (blok.icon === "social") {
+  Icon = Users
+}
 ---
 
-<section {...storyblokEditable(blok)}>
-  <h3>{blok.title}</h3>
-  <ul class="list-disc ml-5">
-    {
-      blok.values?.map((blok) => (
-        <li class="mb-1 last:pb-5">
-          <StoryblokComponent language={language} blok={blok} />
-        </li>
-      ))
-    }
-  </ul>
-</section>
+<Card {...storyblokEditable(blok)}>
+    <CardHeader className="flex flex-col items-center">
+      {<Icon className="h-12 w-12 text-primary mb-2" />}
+      <CardTitle>{blok.title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <ul class="list-disc pl-5 space-y-2">
+        {
+          blok.values?.map((blok) => (
+            <li>
+              <StoryblokComponent language={language} blok={blok} />
+            </li>
+          ))
+        }
+      </ul>
+    </CardContent>
+
+</Card>
