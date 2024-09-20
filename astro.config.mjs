@@ -25,6 +25,7 @@ if (isDevMode) {
 export default defineConfig({
   image: {
     remotePatterns: [{ protocol: "https" }],
+    domains: ["utfs.io", "storyblok.com"],
   },
   redirects: {
     '/': '/home',
