@@ -19,19 +19,24 @@ const imageWrapperClass =
 <section {...storyblokEditable(blok)} class="flex flex-wrap gap-6 mb-10">
   <div class={imageWrapperClass}>
     <Image
-        src={blok.image?.filename + `/m/${maxWidth}x${0}`}
-        alt={blok.image?.alt ?? "image without description"}
-        inferSize
-        class="h-full w-full object-cover object-center"
-        quality={80}
-      />
+      src={blok.image?.filename + `/m/${maxWidth}x${0}`}
+      alt={blok.image?.alt ?? "image without description"}
+      inferSize
+      class="h-full w-full object-cover object-center"
+      quality={80}
+    />
   </div>
   <div>
     <h3>{blok.name}</h3>
-    {blok.link.url.trim().length !== 0 
-    && 
-    (<a class="underline underline-offset-2" href={`/${blok.link.cached_url}`}
-    >More about me...</a>
-    )}
+    {
+      blok.link.cached_url.trim().length !== 0 && (
+        <a
+          class="underline underline-offset-2"
+          href={`/${blok.link.cached_url}`}
+        >
+          More about me...
+        </a>
+      )
+    }
   </div>
 </section>
