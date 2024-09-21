@@ -28,13 +28,13 @@ if (blok.icon === "health") {
 >
   <CardHeader className="flex flex-col items-center">
     {(<Icon className="h-12 w-12 text-accent mb-2" />)}
-    <CardTitle>{blok.title}</CardTitle>
+    <CardTitle className="text-2xl md:text-3xl">{blok.title}</CardTitle>
   </CardHeader>
   <CardContent>
     <ul class="list-disc pl-5 space-y-2">
       {
         blok.values?.map((blok) => (
-          <li>
+          <li class="text-lg md:text-xl">
             <StoryblokComponent language={language} blok={blok} />
           </li>
         ))
