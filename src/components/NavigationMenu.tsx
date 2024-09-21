@@ -36,7 +36,7 @@ export function NavigationMenu({
   }, []);
 
   return (
-    <>
+    <nav className="flex justify-between items-center">
       <NavigationList menuLinks={menuLinks} />
 
       <Sheet>
@@ -99,10 +99,10 @@ export function NavigationMenu({
         </SheetContent>
       </Sheet>
 
-      <div className="flex gap-3">
+      <div className="flex space-x-2">
         <ModeToggle />
         <SelectLanguage languages={languages} langSwitch={langSwitch} />
       </div>
-    </>
+    </nav>
   );
 }

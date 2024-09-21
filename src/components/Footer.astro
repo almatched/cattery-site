@@ -5,22 +5,28 @@ import type { ConfigStoryblok, MenuLinkStoryblok } from "component-types-sb";
 
 const { language } = Astro.props;
 const storyblokApi = useStoryblokApi();
-const { data }: { data: ConfigStoryblok } = await storyblokApi.get("cdn/stories/footer-config", {
-  version: "draft",
-  resolve_links: "url",
-  language,
-});
+const { data }: { data: ConfigStoryblok } = await storyblokApi.get(
+  "cdn/stories/footer-config",
+  {
+    version: "draft",
+    resolve_links: "url",
+    language,
+  }
+);
 const socialLinks: MenuLinkStoryblok[] = data?.story?.content?.items;
 ---
 
-<footer class="mt-auto bg-muted py-8 px-6 flex flex-col items-center">
-  <ul class="flex flex-wrap gap-5">
-    {
-      socialLinks?.map((blok) => (
-        <li class="underline underline-offset-2 hover:text-secondary">
+<footer class="py-8 mt-auto">
+  <div class="container mx-auto px-4 text-center">
+    <p>
+      {data?.story?.content?.copyright}
+    </p>
+    <div class="mt-4">
+      {
+        socialLinks?.map((blok) => (
           <StoryblokComponent language={language} blok={blok} />
-        </li>
-      ))
-    }
-  </ul>
+        ))
+      }
+    </div>
+  </div>
 </footer>

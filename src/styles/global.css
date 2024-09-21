@@ -36,13 +36,13 @@
   }
 
   .dark {
-    --background: 0 0% 15%; /* deep charcoal */
-    --foreground: 45 60% 95%; /* warm ivory */
+    --background: 215, 28%, 13%; /* gray-900 */
+    --foreground: 220, 14%, 84%; /* gray-300*/
 
-    --card: 0 0% 15%; /* deep charcoal */
-    --card-foreground: 45 60% 95%; /* warm ivory */
+    --card: 215 28% 17%; /* bg-gray-800 */
+    --card-foreground: 220, 14%, 84%; /* gray-300*/
 
-    --popover: 0 0% 15%; /* deep charcoal */
+    --popover: 215 28% 17%; /* bg-gray-800 */
     --popover-foreground: 45 60% 95%; /* warm ivory */
 
     --primary: 16 100% 66%; /* bright coral */
@@ -51,8 +51,8 @@
     --secondary: 174 100% 50%; /* turquoise */
     --secondary-foreground: 45 60% 95%; /* warm ivory */
 
-    --muted: 210 20% 20%; /* midnight blue */
-    --muted-foreground: 45 60% 95%; /* warm ivory */
+    --muted: 215, 25%, 27%; /* gray-700*/
+    --muted-foreground: 220, 14%, 84%; /* gray-300*/
 
     --accent: 270 60% 70%; /* lavender */
     --accent-foreground: 0 0% 20%; /* charcoal */
@@ -86,7 +86,7 @@
     @apply mb-3 scroll-m-20 text-xl font-semibold tracking-tight;
   }
   p {
-    @apply leading-7 max-w-prose;
+    @apply leading-7 text-lg text-muted-foreground;
   }
   blockquote {
     @apply mt-6 border-l-2 pl-6 italic;

@@ -1,12 +1,17 @@
 ---
-import { storyblokEditable } from '@storyblok/astro';
-import type { MenuLinkStoryblok } from 'component-types-sb';
+import { storyblokEditable } from "@storyblok/astro";
+import type { MenuLinkStoryblok } from "component-types-sb";
 
 interface Props {
-    language: string;
-    blok: MenuLinkStoryblok;
+  language: string;
+  blok: MenuLinkStoryblok;
 }
 
 const { blok } = Astro.props;
 ---
-<a {...storyblokEditable(blok)} href={blok.link.cached_url}>{blok.link_name}</a>
+
+<a
+  class="text-primary hover:text-primary/80 mx-2 transition-colors"
+  {...storyblokEditable(blok)}
+  href={blok.link.cached_url}>{blok.link_name}</a
+>

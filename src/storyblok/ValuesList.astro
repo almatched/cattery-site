@@ -4,7 +4,7 @@ import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import type { ValuesListStoryblok } from "component-types-sb";
 
-import { HeartPulse, Cat, Users } from "lucide-react"
+import { HeartPulse, Cat, Users } from "lucide-react";
 
 interface Props {
   language: string;
@@ -16,27 +16,29 @@ const { language, blok } = Astro.props;
 let Icon = Cat;
 
 if (blok.icon === "health") {
-  Icon = HeartPulse
+  Icon = HeartPulse;
 } else if (blok.icon === "social") {
-  Icon = Users
+  Icon = Users;
 }
 ---
 
-<Card {...storyblokEditable(blok)}>
-    <CardHeader className="flex flex-col items-center">
-      {<Icon className="h-12 w-12 text-primary mb-2" />}
-      <CardTitle>{blok.title}</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <ul class="list-disc pl-5 space-y-2">
-        {
-          blok.values?.map((blok) => (
-            <li>
-              <StoryblokComponent language={language} blok={blok} />
-            </li>
-          ))
-        }
-      </ul>
-    </CardContent>
-
+<Card
+  className="hover:bg-muted transition-colors duration-300 border-accent border shadow-lg"
+  {...storyblokEditable(blok)}
+>
+  <CardHeader className="flex flex-col items-center">
+    {(<Icon className="h-12 w-12 text-accent mb-2" />)}
+    <CardTitle>{blok.title}</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <ul class="list-disc pl-5 space-y-2">
+      {
+        blok.values?.map((blok) => (
+          <li>
+            <StoryblokComponent language={language} blok={blok} />
+          </li>
+        ))
+      }
+    </ul>
+  </CardContent>
 </Card>

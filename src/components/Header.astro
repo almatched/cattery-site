@@ -17,6 +17,6 @@ const { data }: { data: ConfigStoryblok } = await storyblokApi.get("cdn/stories/
 const headerMenu: MenuLinkStoryblok[] = data?.story?.content?.items;
 ---
 
-<header class="min-h-40 flex gap-4 items-center justify-between">
+<header class="container mx-auto px-4 py-4">
   <NavigationMenu menuLinks={headerMenu}, languages={languages}, langSwitch={langSwitch} client:idle />
 </header>

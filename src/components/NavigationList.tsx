@@ -32,7 +32,7 @@ export function NavigationList({
 
   return (
     <NavigationMenu className="hidden lg:block">
-      <NavigationMenuList className="text-lg flex items-center gap-5">
+      <NavigationMenuList className="flex space-x-4">
         {menuLinks?.map((menu) => {
           return menu.link ? (
             <NavigationMenuItem key={menu._uid}>

@@ -7,3 +7,4 @@
 - [x] Add spinner for js elements, like Theme and Language selectors, when they still load
 - [x] Rework all images to be optimal (weight, optimization, format, etc...) for their place on the page
 - [ ] Add image placeholders when image is loading
+- [ ] Add srcset to images to load images in smaller sizes on smaller screens
