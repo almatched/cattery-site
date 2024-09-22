@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 0 0% 88%; /* soft gray */
+    --background: 210 20% 98%; /* gray-50 */
     --foreground: 0 0% 20%; /* soft black */
 
-    --card: 0 0% 88%; /* soft gray */
+    --card: 220 13% 90%; /* gray-100 */
     --card-foreground: 0 0% 20%; /* soft black */
 
-    --popover: 0 0% 88%; /* soft gray */
+    --popover: 220 13% 90%; /* gray-100 */
     --popover-foreground: 0 0% 20%; /* soft black */
 
     --primary: 210 60% 50%; /* slate blue */
@@ -19,7 +19,7 @@
     --secondary: 180 76% 39%; /* teal */
     --secondary-foreground: 0 0% 88%; /* soft gray */
 
-    --muted: 0 0% 70%; /* medium gray */
+    --muted: 220 14% 96%; /* gray-200 */
     --muted-foreground: 0 0% 20%; /* soft black */
 
     --accent: 16 100% 66%; /* coral */
