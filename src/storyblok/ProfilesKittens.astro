@@ -78,19 +78,19 @@ const maxWidth = "500";
                 <p class="mb-4">
                   {!!profile.gender?.trim().length && (
                     <>
-                      <span class="font-bold">{profile.gender_title}:</span>
+                      <span class="font-bold">{profile.gender_title}:</span>{" "}
                       {profile.gender} <br />
                     </>
                   )}
                   {!!profile.birthdate?.trim().length && (
                     <>
-                      <span class="font-bold">{profile.birthdate_title}:</span>
+                      <span class="font-bold">{profile.birthdate_title}:</span>{" "}
                       {profile.birthdate.slice(0, 10)} <br />
                     </>
                   )}
                   {!!profile.price?.trim().length && (
                     <>
-                      <span class="font-bold">{profile.price_title}:</span>
+                      <span class="font-bold">{profile.price_title}:</span>{" "}
                       {profile.price} <br />
                     </>
                   )}
