@@ -11,7 +11,9 @@ const { blok } = Astro.props;
 ---
 
 <a
-  class="text-primary hover:text-primary/80 mx-2 transition-colors"
+  class="text-primary hover:text-primary/80 transition-colors"
   {...storyblokEditable(blok)}
-  href={blok.link.cached_url}>{blok.link_name}</a
+  href={blok.link.cached_url}
 >
+  {blok.link_name}
+</a>

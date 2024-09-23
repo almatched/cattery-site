@@ -21,7 +21,7 @@ const socialLinks: MenuLinkStoryblok[] = data?.story?.content?.items;
     <p>
       {data?.story?.content?.copyright}
     </p>
-    <div class="mt-4">
+    <div class="mt-4 space-x-4">
       {
         socialLinks?.map((blok) => (
           <StoryblokComponent language={language} blok={blok} />

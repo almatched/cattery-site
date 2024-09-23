@@ -1,7 +1,9 @@
 ---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import type { ContactPageStoryblok } from "component-types-sb";
+import { Mail, Phone } from "lucide-react";
 
 interface Props {
   language: string;
@@ -11,37 +13,66 @@ interface Props {
 const { language, blok } = Astro.props;
 ---
 
-<article {...storyblokEditable(blok)}>
-  {!!blok.title?.trim().length && <h1 class="mb-10">{blok.title}</h1>}
-  {
-    !!blok.email?.trim().length && (
-      <div class="mb-5">
-        <h2>{blok.email_title}</h2>
-        <p>{blok.email}</p>
-      </div>
-    )
-  }
+<Fragment {...storyblokEditable(blok)}>
+  <h1 class="text-4xl font-bold text-center text-primary mb-12">
+    {blok.title}
+  </h1>
+  <div class="max-w-2xl mx-auto">
+    <Card className="border-accent">
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold text-primary">
+          {blok.card_title}
+        </CardTitle>
+      </CardHeader>
 
-  {
-    !!blok.telefon?.trim().length && (
-      <div class="mb-5">
-        <h2>{blok.telefon_title}</h2>
-        <p>{blok.telefon}</p>
-      </div>
-    )
-  }
-  {
-    !!blok.links?.length && (
-      <div class="mb-5">
-        <h2>{blok.links_title}</h2>
-        <ul class="flex flex-wrap gap-5">
-          {blok.links?.map((blok) => (
-            <li class="underline underline-offset-2 hover:text-secondary">
-              <StoryblokComponent language={language} blok={blok} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-</article>
+      <CardContent className="space-y-6">
+        {
+          !!blok.email?.trim().length && (
+            <div class="flex items-center space-x-4">
+              <Mail className="text-primary h-6 w-6" />
+              <div>
+                <h3 class="font-semibold">{blok.email_title}</h3>
+                <a
+                  href="mailto:folco.cattery@gmail.com"
+                  class="hover:text-primary transition-colors"
+                >
+                  {blok.email}
+                </a>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          !!blok.telefon?.trim().length && (
+            <div class="flex items-center space-x-4">
+              <Phone className="text-primary h-6 w-6" />
+              <div>
+                <h3 class="font-semibold">Telefon</h3>
+                <a
+                  href="tel:+491234567890"
+                  class="hover:text-primary transition-colors"
+                >
+                  +49 123 456 7890
+                </a>
+              </div>
+            </div>
+          )
+        }
+
+        {
+          !!blok.links?.length && (
+            <div class="pt-4 border-t border-primary">
+              <h3 class="font-semibold mb-2 text-xl">{blok.links_title}</h3>
+              <div class="flex items-center space-x-4">
+                {blok.links?.map((blok) => (
+                  <StoryblokComponent language={language} blok={blok} />
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </CardContent>
+    </Card>
+  </div>
+</Fragment>
