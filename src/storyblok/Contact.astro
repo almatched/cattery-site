@@ -33,7 +33,7 @@ const { language, blok } = Astro.props;
               <div>
                 <h3 class="font-semibold">{blok.email_title}</h3>
                 <a
-                  href="mailto:folco.cattery@gmail.com"
+                  href={`mailto:${blok.email}`}
                   class="hover:text-primary transition-colors"
                 >
                   {blok.email}
