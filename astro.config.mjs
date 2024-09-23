@@ -40,7 +40,6 @@ export default defineConfig({
       'page': 'storyblok/Page',
       'values_section': 'storyblok/ValuesSection',
       'config': 'storyblok/Config',
-      'profiles': 'storyblok/Profiles',
       'contact_page': 'storyblok/Contact',
       'gallery_page': 'storyblok/GalleryPage',
       'home_page': 'storyblok/HomePage',

@@ -8,6 +8,9 @@ import type {
   PageStoryblok,
   ProfileStoryblok,
 } from "component-types-sb";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 interface Props {
   language: string;
@@ -41,57 +44,75 @@ const articles = itemsData.stories;
 const maxWidth = "500";
 ---
 
-<section {...storyblokEditable(blok)}>
-  {!!title.trim().length && <h1 class="sr-only">{title}</h1>}
+<Fragment {...storyblokEditable(blok)}>
+  {
+    !!title.trim().length && (
+      <h1 class="text-4xl font-bold text-center text-primary mb-12">{title}</h1>
+    )
+  }
   {
     articles?.length === 0 ? (
       <p class="text-2xl">{noContentFallback}</p>
     ) : (
-      <ul class="gap-5 grid grid-cols-1 min-[450px]:grid-cols-2 text-sm min-[450px]:text-base">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles?.reverse().map((article) => {
           const profile: ProfileStoryblok = article.content;
           profile.slug = article.slug;
           return (
-            <li class="relative hover:opacity-50 border border-accent rounded-md">
-              <div class="aspect-square w-full rounded-t-md overflow-hidden mb-2">
+            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <div class="aspect-square overflow-hidden">
                 <Image
                   src={profile.image?.filename + `/m/${maxWidth}x${0}`}
                   alt={profile.image?.alt ?? "image without description"}
                   inferSize
-                  class="object-cover object-center w-full h-full"
+                  class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   quality={80}
                 />
               </div>
-              <div class="mb-2 min-[450px]:mb-5 mx-2">
-                <h2>
-                  <a href={getTransLink(language, `/profiles/kittens/${profile.slug}`)}>
-                    <span class="absolute inset-0 z-10" aria-hidden="true" />
-                    {profile.title}
-                  </a>
-                </h2>
-                {!!profile.gender?.trim().length && (
-                  <div class="mb-2">
-                    <p class="font-bold">{profile.gender_title}</p>
-                    <p>{profile.gender}</p>
-                  </div>
-                )}
-                {!!profile.birthdate?.trim().length && (
-                  <div class="mb-2">
-                    <p class="font-bold">{profile.birthdate_title}</p>
-                    <p>{profile.birthdate.slice(0, 10)}</p>
-                  </div>
-                )}
-                {!!profile.price?.trim().length && (
-                  <div class="mb-2">
-                    <p class="font-bold">{profile.price_title}</p>
-                    <p>{profile.price}</p>
-                  </div>
-                )}
-              </div>
-            </li>
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-primary">
+                  {profile.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p class="mb-4">
+                  {!!profile.gender?.trim().length && (
+                    <>
+                      <span class="font-bold">{profile.gender_title}:</span>
+                      {profile.gender} <br />
+                    </>
+                  )}
+                  {!!profile.birthdate?.trim().length && (
+                    <>
+                      <span class="font-bold">{profile.birthdate_title}:</span>
+                      {profile.birthdate.slice(0, 10)} <br />
+                    </>
+                  )}
+                  {!!profile.price?.trim().length && (
+                    <>
+                      <span class="font-bold">{profile.price_title}:</span>
+                      {profile.price} <br />
+                    </>
+                  )}
+                </p>
+                <a
+                  href={getTransLink(
+                    language,
+                    `/profiles/kittens/${profile.slug}`
+                  )}
+                  class={buttonVariants({
+                    variant: "outline",
+                    className:
+                      "w-full border-primary text-primary hover:bg-primary hover:text-foreground text-lg md:text-xl",
+                  })}
+                >
+                  Profil ansehen <ChevronRight className="ml-2 h-4 w-4" />
+                </a>
+              </CardContent>
+            </Card>
           );
         })}
-      </ul>
+      </div>
     )
   }
-</section>
+</Fragment>
