@@ -28,11 +28,11 @@ export function SelectLanguage({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {isLoading ? (
-          <Button variant="outline" size="icon" className="border-accent">
+          <Button variant="outline" size="icon">
             <LoadingSVG />
           </Button>
         ) : (
-          <Button variant="outline" size="icon" className="border-accent">
+          <Button variant="outline" size="icon" className="text-foreground">
             <Globe />
             <span className="sr-only">Toggle language select</span>
           </Button>

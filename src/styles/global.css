@@ -14,16 +14,16 @@
     --popover-foreground: 0 0% 20%; /* soft black */
 
     --primary: 210 60% 50%; /* slate blue */
-    --primary-foreground: 0 0% 88%; /* soft gray */
+    --primary-foreground: 0 0% 100%; /* white */
 
     --secondary: 180 76% 39%; /* teal */
-    --secondary-foreground: 0 0% 88%; /* soft gray */
+    --secondary-foreground: 0 0% 100%; /* white */
 
     --muted: 220 14% 96%; /* gray-200 */
     --muted-foreground: 0 0% 20%; /* soft black */
 
     --accent: 16 100% 66%; /* coral */
-    --accent-foreground: 0 0% 88%; /* soft gray */
+    --accent-foreground: 0 0% 100%; /* white */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -36,26 +36,26 @@
   }
 
   .dark {
-    --background: 215, 28%, 13%; /* gray-900 */
-    --foreground: 220, 14%, 84%; /* gray-300*/
+    --background: 215 28% 13%; /* gray-900 */
+    --foreground: 220 14% 84%; /* gray-300*/
 
     --card: 215 28% 17%; /* bg-gray-800 */
-    --card-foreground: 220, 14%, 84%; /* gray-300*/
+    --card-foreground: 220 14% 84%; /* gray-300*/
 
     --popover: 215 28% 17%; /* bg-gray-800 */
-    --popover-foreground: 45 60% 95%; /* warm ivory */
+    --popover-foreground: 220 14% 84%; /* gray-300*/
 
     --primary: 16 100% 66%; /* bright coral */
-    --primary-foreground: 45 60% 95%; /* warm ivory */
+    --primary-foreground: 0 0% 100%; /* white */
 
     --secondary: 174 100% 50%; /* turquoise */
-    --secondary-foreground: 45 60% 95%; /* warm ivory */
+    --secondary-foreground: 0 0% 100%; /* white */
 
-    --muted: 215, 25%, 27%; /* gray-700*/
-    --muted-foreground: 220, 14%, 84%; /* gray-300*/
+    --muted: 215 25% 27%; /* gray-700*/
+    --muted-foreground: 220 14% 84%; /* gray-300*/
 
     --accent: 270 60% 70%; /* lavender */
-    --accent-foreground: 0 0% 20%; /* charcoal */
+    --accent-foreground: 0 0% 0%; /* soft black */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -86,7 +86,7 @@
     @apply mb-3 scroll-m-20 text-xl font-semibold tracking-tight;
   }
   p {
-    @apply leading-7 text-lg text-muted-foreground;
+    @apply leading-7 text-lg;
   }
   blockquote {
     @apply mt-6 border-l-2 pl-6 italic;

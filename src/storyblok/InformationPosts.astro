@@ -2,7 +2,14 @@
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
 import { getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
-import type { AllInformationPostsStoryblok, InformationPostStoryblok, PageStoryblok } from "component-types-sb";
+import type {
+  AllInformationPostsStoryblok,
+  InformationPostStoryblok,
+  PageStoryblok,
+} from "component-types-sb";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, ChevronRight, Tag } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 interface Props {
   language: string;
@@ -12,13 +19,11 @@ interface Props {
 const { language, blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
-const { data: informationPageData }: { data: PageStoryblok } = await storyblokApi.get(
-  "cdn/stories/information",
-  {
+const { data: informationPageData }: { data: PageStoryblok } =
+  await storyblokApi.get("cdn/stories/information", {
     version: isPreview() ? "draft" : "published",
     language,
-  }
-);
+  });
 
 const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
   version: isPreview() ? "draft" : "published",
@@ -35,35 +40,58 @@ const articles = itemsData.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
-  {!!title.trim().length && <h1 class="sr-only">{title}</h1>}
+  {
+    !!title.trim().length && (
+      <h1 class="text-4xl font-bold text-center text-primary mb-12">{title}</h1>
+    )
+  }
   {
     articles?.length === 0 ? (
       <p class="text-2xl">{noContentFallback}</p>
     ) : (
-      <ul>
+      <div class="space-y-8">
         {articles?.reverse().map((article) => {
           const informationPost: InformationPostStoryblok = article.content;
           informationPost.slug = article.slug;
           return (
-            <li class="mb-10 border border-accent rounded-md px-5 sm:px-10 py-3 sm:py-5 relative hover:opacity-50">
-              <h2>
-                <a
-                  href={getTransLink(
-                    language,
-                    `/information/${informationPost.slug}`
-                  )}
-                >
-                  <span class="absolute inset-0 z-10" aria-hidden="true" />
-                  {informationPost.title}
-                </a>
-              </h2>
-              <p class="line-clamp-4 sm:line-clamp-3">
-                {informationPost.meta_description}
-              </p>
-            </li>
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 border-l-4 border-primary">
+              <div class="p-6">
+                <CardHeader className="p-0">
+                  <div class="flex items-center mb-2">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span class="mr-4">
+                      {new Date(article.first_published_at).toLocaleDateString(
+                        "de-DE"
+                      )}
+                    </span>
+                    <Tag className="w-4 h-4 mr-2" />
+                    <span>{informationPost.tag}</span>
+                  </div>
+                  <CardTitle className="text-2xl font-bold text-primary mb-2">
+                    {informationPost.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <p class="mb-4">{informationPost.meta_description}</p>
+                  <a
+                    href={getTransLink(
+                      language,
+                      `/information/${informationPost.slug}`
+                    )}
+                    class={buttonVariants({
+                      variant: "outline",
+                      className: "leading-0",
+                    })}
+                  >
+                    <p>{informationPage.button_text}</p>
+                    <ChevronRight className="ml-2 h-6 w-6" />
+                  </a>
+                </CardContent>
+              </div>
+            </Card>
           );
         })}
-      </ul>
+      </div>
     )
   }
 </section>

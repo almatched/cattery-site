@@ -42,11 +42,11 @@ export function NavigationMenu({
       <Sheet>
         <SheetTrigger asChild className="lg:hidden">
           {isLoading ? (
-            <Button variant="outline" size="icon" className="border-accent">
+            <Button variant="outline" size="icon">
               <LoadingSVG />
             </Button>
           ) : (
-            <Button variant="outline" size="icon" className="border-accent">
+            <Button variant="outline" size="icon" className="text-foreground">
               <AlignJustify />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
