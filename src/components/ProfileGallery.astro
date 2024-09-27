@@ -20,19 +20,18 @@ if (locale === "en") {
 
 const pathNameWithoutId: string =
   lang === "de" ? `/gallery/${profileName}` : `/${lang}/gallery/${profileName}`;
-const maxWidth = "400";
 ---
 
-<ul class="gap-4 justify-center grid grid-cols-2 sm:grid-cols-3">
+<ul class="gap-8 grid grid-cols-2 md:grid-cols-3">
   {
     images.map((image) => (
-      <li class="aspect-square rounded-md overflow-hidden">
+      <li class="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg aspect-square hover:opacity-80 transition-opacity duration-300">
         <a href={`${pathNameWithoutId}/${image.id}?img_url=${image.filename}`}>
           <Image
-            src={image.filename + `/m/${maxWidth}x${0}`}
+            src={image.filename + `/m/${600}x${0}`}
             alt={image.alt ?? "image without description"}
             inferSize
-            class="object-cover object-center w-full h-full"
+            class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
             quality={80}
           />
         </a>
