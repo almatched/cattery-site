@@ -17,62 +17,60 @@ const { language, blok } = Astro.props;
   <h1 class="text-4xl font-bold text-center text-primary mb-12">
     {blok.title}
   </h1>
-  <div class="max-w-2xl mx-auto">
-    <Card className="border-accent">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-primary">
-          {blok.card_title}
-        </CardTitle>
-      </CardHeader>
+  <Card className="border-accent max-w-2xl mx-auto">
+    <CardHeader>
+      <CardTitle className="text-2xl font-bold text-primary">
+        {blok.card_title}
+      </CardTitle>
+    </CardHeader>
 
-      <CardContent className="space-y-6">
-        {
-          !!blok.email?.trim().length && (
+    <CardContent className="space-y-6">
+      {
+        !!blok.email?.trim().length && (
+          <div class="flex items-center space-x-4">
+            <Mail className="text-primary h-6 w-6" />
+            <div>
+              <h3 class="font-semibold">{blok.email_title}</h3>
+              <a
+                href={`mailto:${blok.email}`}
+                class="hover:text-primary transition-colors"
+              >
+                {blok.email}
+              </a>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        !!blok.telefon?.trim().length && (
+          <div class="flex items-center space-x-4">
+            <Phone className="text-primary h-6 w-6" />
+            <div>
+              <h3 class="font-semibold">{blok.telefon_title}</h3>
+              <a
+                href="tel:+491234567890"
+                class="hover:text-primary transition-colors"
+              >
+                {blok.telefon}
+              </a>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        !!blok.links?.length && (
+          <div class="pt-4 border-t border-primary">
+            <h3 class="font-semibold mb-2 text-xl">{blok.links_title}</h3>
             <div class="flex items-center space-x-4">
-              <Mail className="text-primary h-6 w-6" />
-              <div>
-                <h3 class="font-semibold">{blok.email_title}</h3>
-                <a
-                  href={`mailto:${blok.email}`}
-                  class="hover:text-primary transition-colors"
-                >
-                  {blok.email}
-                </a>
-              </div>
+              {blok.links?.map((blok) => (
+                <StoryblokComponent language={language} blok={blok} />
+              ))}
             </div>
-          )
-        }
-
-        {
-          !!blok.telefon?.trim().length && (
-            <div class="flex items-center space-x-4">
-              <Phone className="text-primary h-6 w-6" />
-              <div>
-                <h3 class="font-semibold">Telefon</h3>
-                <a
-                  href="tel:+491234567890"
-                  class="hover:text-primary transition-colors"
-                >
-                  +49 123 456 7890
-                </a>
-              </div>
-            </div>
-          )
-        }
-
-        {
-          !!blok.links?.length && (
-            <div class="pt-4 border-t border-primary">
-              <h3 class="font-semibold mb-2 text-xl">{blok.links_title}</h3>
-              <div class="flex items-center space-x-4">
-                {blok.links?.map((blok) => (
-                  <StoryblokComponent language={language} blok={blok} />
-                ))}
-              </div>
-            </div>
-          )
-        }
-      </CardContent>
-    </Card>
-  </div>
+          </div>
+        )
+      }
+    </CardContent>
+  </Card>
 </Fragment>
