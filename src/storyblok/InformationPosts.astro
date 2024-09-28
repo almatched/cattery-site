@@ -1,6 +1,6 @@
 ---
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
-import { getTransLink } from "../utils/langs.ts";
+import { getFullUrl, getTransLink } from "../utils/langs.ts";
 import isPreview from "@/utils/isPreview.ts";
 import type {
   AllInformationPostsStoryblok,
@@ -8,7 +8,13 @@ import type {
   PageStoryblok,
 } from "component-types-sb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, ChevronRight, Tag } from "lucide-react";
+import {
+  AlertCircle,
+  BookOpen,
+  Calendar,
+  ChevronRight,
+  Tag,
+} from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 
 interface Props {
@@ -34,20 +40,40 @@ const { data: itemsData } = await storyblokApi.get(`cdn/stories`, {
 
 const informationPage: PageStoryblok = informationPageData.story.content;
 
-const title = informationPage.title;
-const noContentFallback = informationPage.content_absent;
 const articles = itemsData.stories;
 ---
 
 <section {...storyblokEditable(blok)}>
   {
-    !!title.trim().length && (
-      <h1 class="text-4xl font-bold text-center text-primary mb-12">{title}</h1>
-    )
-  }
-  {
-    articles?.length === 0 ? (
-      <p class="text-2xl">{noContentFallback}</p>
+    articles?.length !== 0 ? (
+      <Fragment>
+        <BookOpen className="w-24 h-24 text-primary mb-6 mx-auto" />
+        <h1 class="text-4xl font-bold text-center text-primary mb-12">
+          {informationPage.title}
+        </h1>
+        <Card className="border-accent mx-auto max-w-xl text-center">
+          <CardHeader>
+            <AlertCircle className="w-12 h-12 mx-auto mb-4" />
+            <CardTitle>{informationPage.content_absent_title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p class="mb-6">{informationPage.content_absent}</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href={getFullUrl(
+                  language,
+                  informationPage.links[0].link.cached_url
+                )}
+                class={buttonVariants({
+                  variant: "default",
+                })}
+              >
+                {informationPage.links[0].link_name}
+              </a>
+            </div>
+          </CardContent>
+        </Card>
+      </Fragment>
     ) : (
       <div class="space-y-8">
         {articles?.reverse().map((article) => {
