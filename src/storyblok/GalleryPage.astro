@@ -12,6 +12,12 @@ const { blok } = Astro.props;
 ---
 
 <article {...storyblokEditable(blok)}>
-  {!!blok.title?.trim().length && <h1 class="sr-only">{blok.title}</h1>}
+  {
+    !!blok.title?.trim().length && (
+      <h1 class="text-4xl font-bold text-center text-primary mb-12">
+        {blok.title}
+      </h1>
+    )
+  }
   <Gallery />
 </article>
