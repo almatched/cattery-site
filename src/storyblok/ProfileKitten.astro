@@ -68,14 +68,6 @@ const imageWrapperClass = "aspect-square max-w-[400px] w-full rounded-md overflo
     )
   }
   {
-    !!blok.gallery?.length && (
-      <section class="mb-5">
-        <h2>{blok.gallery_title}</h2>
-        <ProfileGallery images={blok.gallery} />
-      </section>
-    )
-  }
-  {
     !!blok.parents?.length && (
       <section class="mb-5">
         <h2>{blok.parents_title}</h2>
@@ -100,6 +92,14 @@ const imageWrapperClass = "aspect-square max-w-[400px] w-full rounded-md overflo
             </li>
           ))}
         </ul>
+      </section>
+    )
+  }
+  {
+    !!blok.gallery?.length && (
+      <section class="mb-5">
+        <h2>{blok.gallery_title}</h2>
+        <ProfileGallery images={blok.gallery} />
       </section>
     )
   }
